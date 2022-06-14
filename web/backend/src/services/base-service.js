@@ -5,19 +5,21 @@ class BaseService {
         BaseModel = model
     }
 
-    list(where) {
-        return BaseModel?.find(where || {}) ?? null
+    async list(where) {
+        return await BaseModel?.findAll(where || {}) ?? null
     }
 
-    create(data) {
-        return new BaseModel(data).save()
+    async create(data) {
+        return await BaseModel?.build(data).save()
     }
 
-    update(id, data) {
-        return BaseModel.find(id).update(data)
+    async update(id, data) {
+        return await BaseModel.update(data, {where: {id: id}})
     }
 
-    delete(id) {
-        return BaseModel.find(id).delete()
+    async delete(id) {
+        return await BaseModel.destroy({where: {id: id}})
     }
 }
+
+module.exports = BaseService

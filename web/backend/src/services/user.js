@@ -1,8 +1,11 @@
 const BaseService = require('./base-service')
-const BaseModel = require('../models/user')
+const {User} = require('../models')
 
 class UserService extends BaseService {
-    constructor(model) {
-        super(BaseModel)
+    constructor() {
+        super(User)
     }
+
 }
+
+module.exports = UserService

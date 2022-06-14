@@ -1,5 +1,5 @@
 {
-  "name": "businuss-basket-app",
+  "name": "business-basket-app",
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
@@ -13,6 +13,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "http-status": "^1.5.2",
+    "joi": "^17.6.0",
     "nodemon": "^2.0.16",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.20.1"

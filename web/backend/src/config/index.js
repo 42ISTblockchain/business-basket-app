@@ -1,7 +1,6 @@
 const server = require('./server')
-const database = require('./database')
+const database = require('../config/database')
 
 module.exports = () => {
     server()
-    database()
 }

@@ -1,24 +1,21 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize({
-    dialect: 'postgres'
-});
+'use strict';
 
-class User extends Model {}
+const Sequelize = require('sequelize');
+const {sequelize} = require('../config/database');
 
-User.init({
-    // Model attributes are defined here
-    firstName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    lastName: {
-        type: DataTypes.STRING
-        // allowNull defaults to true
+const User = sequelize.define('User', {
+        firstName: {
+            type: Sequelize.STRING,
+        },
+        lastName: {
+            type: Sequelize.STRING,
+        },
+        email: {
+            type: Sequelize.STRING
+        }
     }
-}, {
-    // Other model options go here
-    sequelize, // We need to pass the connection instance
-    modelName: 'User' // We need to choose the model name
-});
+);
 
-module.exports = new User
+module.exports = {
+    User
+};
