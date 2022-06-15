@@ -6,6 +6,9 @@ class UserService extends BaseService {
         super(User)
     }
 
+    async loginUser(loginData) {
+        return User.findOne({where: loginData})
+    }
 }
 
 module.exports = UserService
