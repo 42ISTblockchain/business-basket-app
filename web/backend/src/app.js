@@ -1,5 +1,5 @@
 const express = require('express')
-const {UserRoutes} = require('./routes')
+const routes = require('./routes')
 const config = require('./config')
 const helmet = require('helmet')
 const app = express()
@@ -10,5 +10,5 @@ app.use(helmet())
 
 app.listen(process.env.APP_PORT, () => {
     console.log("Sunucu ayağa kalktı...")
-    app.use('/', UserRoutes)
+    app.use('/api', routes)
 })
