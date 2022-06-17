@@ -9,23 +9,27 @@ Content-Type: application/json
 {}
 
 ###
-POST http://localhost:8000/api/user/create
+POST http://localhost:8000/api/hire/register
 Content-Type: application/json
 
 {
-  "firstName": "Fatih",
-  "lastName": "Karatay",
-  "email": "merhaba@mail.com",
-  "password": "12345"
+  "companyName": "Ali",
+  "email": "asas1121421rtt@kar.com",
+  "password": "12345",
+  "taxNumber": "123457685",
+  "taxOffice": "office",
+  "phoneNumber": "564645646",
+  "address": "adress",
+  "ascac": "ascac"
 }
 
 ###
-POST http://localhost:8000/api/login
+POST http://localhost:8000/api/hire/login
 Content-Type: application/json
 
 {
-  "email": "merhaba@mail.com",
-  "password": "12345"
+  "email": "test@tes.com",
+  "password": "54564564"
 }
 
 ###

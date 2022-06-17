@@ -12,11 +12,22 @@
 // `.associate` called on them.
 
 // Any time you create a new model for an app, import it here
-const {User} = require('./User');
+const {Worker} = require('./worker');
+const {Hire} = require('./hire');
+const {Job} = require('./job');
+const {JobApplication} = require('./job-application');
+const {JobCategory} = require('./job-category');
+const {Comment} = require('./comment');
+
 
 // All models you want to expose to other modules should go here
 const db = {
-    User,
+    Worker,
+    Hire,
+    Job,
+    JobApplication,
+    JobCategory,
+    Comment
 };
 
 Object.keys(db).forEach(function(modelName) {

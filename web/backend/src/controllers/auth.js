@@ -9,7 +9,6 @@ class Auth {
         await authService.loginUser(req.body)
             .then((user) => {
                 if (!user) return res.status(httpStatus.NOT_FOUND).send({message: "Böyle bir kullanıcı bulunamadı!"})
-                console.log()
                 user = {
                     firstName: user.firstName,
                     lastName: user.lastName,

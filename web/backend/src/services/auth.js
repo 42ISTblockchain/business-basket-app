@@ -1,12 +1,9 @@
-const BaseService = require('./base-service')
+const AuthBaseService = require('./base-services/auth-base-service')
 const {User} = require('../models')
 
-class AuthService extends BaseService {
+class AuthService extends AuthBaseService {
     constructor() {
         super(User);
-    }
-    async loginUser(loginData) {
-        return User.findOne({where: loginData})
     }
 }
 
