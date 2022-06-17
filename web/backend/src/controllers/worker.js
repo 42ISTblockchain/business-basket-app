@@ -1,14 +1,16 @@
 const httpStatus = require('http-status')
-const Service = require('../services/user')
+const Service = require('../services/worker')
 const userService = new Service()
+const {passwordHash} = require('../scripts/utils/helper')
 
-class User {
+class Worker {
     async index(req, res) {
         const user = await userService.list()
         res.status(httpStatus.OK).send(user)
     }
 
     async create(req, res) {
+        req.body.password = passwordHash(req.body.password)
         const user = await userService.create(req.body)
         res.status(httpStatus.OK).send(user)
     }
@@ -24,4 +26,4 @@ class User {
     }
 }
 
-module.exports = new User()
+module.exports = new Worker()

@@ -1,25 +1,39 @@
 ###
-GET http://localhost:8000/
+GET http://localhost:8000/api/user
 Accept: application/json
 
 ###
-DELETE http://localhost:8000/delete/2
+DELETE http://localhost:8000/api/user/delete/5
 Content-Type: application/json
 
 {}
 
 ###
-POST http://localhost:8000/create
+POST http://localhost:8000/api/hire/register
 Content-Type: application/json
 
 {
-  "firstName": "Salih",
-  "lastName": "Çakmak",
-  "email": "test@mail.com"
+  "companyName": "Ali",
+  "email": "asas1121421rtt@kar.com",
+  "password": "12345",
+  "taxNumber": "123457685",
+  "taxOffice": "office",
+  "phoneNumber": "564645646",
+  "address": "adress",
+  "ascac": "ascac"
 }
 
 ###
-PUT http://localhost:8000/update/1
+POST http://localhost:8000/api/hire/login
+Content-Type: application/json
+
+{
+  "email": "test@tes.com",
+  "password": "54564564"
+}
+
+###
+PUT http://localhost:8000/api/user/update/5
 Content-Type: application/json
 
 {
