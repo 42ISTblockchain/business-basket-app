@@ -1,9 +1,11 @@
 'use strict';
 
+const httpStatus = require("http-status");
 const Sequelize = require('sequelize');
 const {sequelize} = require('../config/database');
-const {passwordHash} = require('../scripts/utils/helper')
-const phoneValidation = /\d{3}-\d{3}-\d{4}/;
+const CustomError = require('../scripts/error/CustomError');
+const {PASSWORD_ERROR} = require("../scripts/error/errorMessages");
+const {passwordHash} = require('../scripts/utils/helper');
 
 const Hire = sequelize.define('Hire', {
         companyName: {
@@ -34,9 +36,7 @@ const Hire = sequelize.define('Hire', {
             type: Sequelize.STRING,
             allowNull: false,
 			validate : {
-				validator : function (value) {
-					return 	phoneValidation.test(value)
-				}
+				is : /^\d{10}$/
 			}
         },
         address: {
@@ -59,7 +59,9 @@ const Hire = sequelize.define('Hire', {
 	{
         hooks: {
             beforeCreate: async (hire) => {
-				if (hire.password.length <= 6 && hire.password.length >= 20) throw new Error("Password err")
+				if (hire.password.length <= 6){
+					throw new CustomError(PASSWORD_ERROR.name, PASSWORD_ERROR.message, httpStatus.BAD_REQUEST)
+				}
                 if(hire.password) hire.password = passwordHash(hire.password)
             }
         }

@@ -1,12 +1,14 @@
 const httpStatus = require('http-status')
+const CustomError = require('../scripts/error/CustomError')
+const {LOGIN_ERROR} = require("../scripts/error/errorMessages");
 
 const validate = (schema) => (req, res, next) => {
     const {value, error} = schema.validate(req.body)
 
     if (error) {
-        const errorMessage = error.details?.map(detail => detail.message).join(', ')
-        res.status(httpStatus.BAD_REQUEST).json({ error: errorMessage})
-        return
+		let customErr = new CustomError(LOGIN_ERROR.name, LOGIN_ERROR.message, httpStatus.NOT_FOUND)
+		next(customErr);
+        return ;
     }
 
     Object.assign(req, value)

@@ -1,34 +1,24 @@
-### Hire List
-GET http://localhost:8000/api/hire/
-Accept: application/json
-
-### Hire Job List
-GET http://localhost:8000/api/hire/job
-Accept: application/json
-
-
 ### Hire register
 POST http://localhost:8000/api/hire/register
 Content-Type: application/json
 
 {
   "companyName": "Ali",
-  "email": "asas1121421rtt@kar.com",
-  "password": "12345",
-  "taxNumber": "123457685",
+  "email": "fatih1234567@kar.com",
+  "password": "12344354354",
+  "taxNumber": "1234576",
   "taxOffice": "office",
-  "phoneNumber": "564645646",
-  "address": "adress",
-  "ascac": "ascac"
+  "phoneNumber": "5435235485",
+  "address": "adress"
 }
 
-###
+### Hire Login
 POST http://localhost:8000/api/hire/login
 Content-Type: application/json
 
 {
-  "email": "test@tes.com",
-  "password": "54564564"
+  "email": "fatih123@kar.com",
+  "password": "1234567"
 }
 
 ### Hire job create
@@ -40,20 +30,29 @@ Content-Type: application/json
   "gender": "male",
   "startDate": "2022-06-20T12:49:23.471Z",
   "endDate": "2022-06-20T12:49:23.471Z",
-  "companyId": 4,
+  "companyId": 191,
   "categoryId": 1
 }
 
+### Hire job list
+GET http://localhost:8000/api/hire/job/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImNvbXBhbnlOYW1lIjoiQWxpIiwiZW1haWwiOiJmYXRpaDEyM0BrYXIuY29tIiwicGFzc3dvcmQiOiI5Mjg4YzUyMGM0YjViNDAxMTc3NjhiODRlZmViYjQ0NzlhZjg3ODE5YWZmNjdiYWM3Zjg4NTQ1MGU0MzNhMTFhIiwidGF4TnVtYmVyIjoiMTIzNDU3NiIsInRheE9mZmljZSI6Im9mZmljZSIsInBob25lTnVtYmVyIjoiNTQzNTIzNTQ4MiIsImFkZHJlc3MiOiJhZHJlc3MiLCJlbWFpbFZlcmlmaWVkIjpudWxsLCJyZW1lbWJlclRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkVG9rZW4iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiJ9LCJfcHJldmlvdXNEYXRhVmFsdWVzIjp7ImNvbXBhbnlOYW1lIjoiQWxpIiwiZW1haWwiOiJmYXRpaDEyM0BrYXIuY29tIiwicGFzc3dvcmQiOiI5Mjg4YzUyMGM0YjViNDAxMTc3NjhiODRlZmViYjQ0NzlhZjg3ODE5YWZmNjdiYWM3Zjg4NTQ1MGU0MzNhMTFhIiwidGF4TnVtYmVyIjoiMTIzNDU3NiIsInRheE9mZmljZSI6Im9mZmljZSIsInBob25lTnVtYmVyIjoiNTQzNTIzNTQ4MiIsImFkZHJlc3MiOiJhZHJlc3MiLCJlbWFpbFZlcmlmaWVkIjpudWxsLCJyZW1lbWJlclRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkVG9rZW4iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiJ9LCJ1bmlxbm8iOjEsIl9jaGFuZ2VkIjp7fSwiX29wdGlvbnMiOnsiaXNOZXdSZWNvcmQiOmZhbHNlLCJfc2NoZW1hIjpudWxsLCJfc2NoZW1hRGVsaW1pdGVyIjoiIiwicmF3Ijp0cnVlLCJhdHRyaWJ1dGVzIjpbImNvbXBhbnlOYW1lIiwiZW1haWwiLCJwYXNzd29yZCIsInRheE51bWJlciIsInRheE9mZmljZSIsInBob25lTnVtYmVyIiwiYWRkcmVzcyIsImVtYWlsVmVyaWZpZWQiLCJyZW1lbWJlclRva2VuIiwicmVzZXRQYXNzd29yZFRva2VuIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY1NTc1ODU1NiwiZXhwIjoxNjU2MzYzMzU2fQ.Ka08TklxlSA-G2gImn8jZFdKLSGt5JkyxrOEe7WzEUw
+
+
+{}
+
 ### Hire job update
-PUT http://localhost:8000/api/hire/job/update/4
+PUT http://localhost:8000/api/hire/job/update/14
 Content-Type: application/json
 
 {
-  "description": "Açıklama"
+	"description": "deneme"
 }
 
-###
-DELETE http://localhost:8000/api/hire/job/delete/3
+
+### Hire job delete
+DELETE http://localhost:8000/api/hire/job/delete/14
 Content-Type: application/json
 
 {}
