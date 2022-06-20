@@ -9,5 +9,7 @@ router.post('/register', HireController.register)
 
 router.get('/job', JobController.list)
 router.post('/job/create', JobController.create)
+router.put('/job/update/:id', JobController.update)
+router.delete('/job/delete/:id', JobController.delete)
 
 module.exports = router
