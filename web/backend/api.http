@@ -1,5 +1,9 @@
-###
+### Hire List
 GET http://localhost:8000/api/hire/
+Accept: application/json
+
+### Hire Job List
+GET http://localhost:8000/api/hire/job
 Accept: application/json
 
 ###
@@ -8,7 +12,7 @@ Content-Type: application/json
 
 {}
 
-###
+### Hire register
 POST http://localhost:8000/api/hire/register
 Content-Type: application/json
 
@@ -30,6 +34,19 @@ Content-Type: application/json
 {
   "email": "test@tes.com",
   "password": "54564564"
+}
+
+### Hire job create
+POST http://localhost:8000/api/hire/job/create
+Content-Type: application/json
+
+{
+  "description": "test description",
+  "gender": "male",
+  "startDate": "2022-06-20T12:49:23.471Z",
+  "endDate": "2022-06-20T12:49:23.471Z",
+  "companyId": 4,
+  "categoryId": 1
 }
 
 ###

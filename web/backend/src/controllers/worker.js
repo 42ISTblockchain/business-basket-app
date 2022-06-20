@@ -1,5 +1,5 @@
 const httpStatus = require('http-status')
-const Service = require('../services/worker')
+const Service = require('../services/workers/worker')
 const userService = new Service()
 const {passwordHash} = require('../scripts/utils/helper')
 
