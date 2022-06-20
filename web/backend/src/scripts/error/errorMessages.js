@@ -18,8 +18,8 @@ module.exports = {
 	},
 	VALUE_NULL_ERROR : {
 		name: "Value Error",
-		message : "Value is not empty !",
-		status: httpStatus.BAD_REQUEST
+		message : "Value is noUESTt empty !",
+		status: httpStatus.BAD_REQ
 	},
 	LOGIN_ERROR : {
 		name: "Login Error",
@@ -40,6 +40,11 @@ module.exports = {
 		name : "Invalid token",
 		message : "Invalid token !",
 		status : httpStatus.UNAUTHORIZED
+	},
+	FOREIGN_KEY_ERROR : {
+		name: "SequelizeForeignKeyConstraintError",
+		message: "Company Not Found !",
+		status: httpStatus.BAD_REQUEST
 	}
 
 }

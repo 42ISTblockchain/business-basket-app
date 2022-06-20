@@ -11,14 +11,13 @@ const hireService = new Service()
 class HireController {
 
     login = errorWrapper(async (req, res) => {
-        req.body.password = passwordHash(req.body.password)
+		req.body.password = passwordHash(req.body.password)
         let hire = await hireService.login(req.body)
 		if (!hire){
 			throw new CustomError(LOGIN_NAME, USER_NOT_FOUND, httpStatus.NOT_FOUND)
 		}
 		hire = {
-			companyName: hire.companyName,
-			email: hire.email,
+			companyId: hire.id,
 			tokens: {
 				access_token: generateAccessToken(hire),
 				refresh_token: generateRefreshToken(hire)
@@ -29,8 +28,9 @@ class HireController {
     })
 
     register = errorWrapper(async (req, res) => {
-		await hireService.register(req.body)
-		res.status(httpStatus.OK).send("basarili")
+		let hireData = await hireService.register(req.body)
+		delete hireData.dataValues.password
+		res.status(httpStatus.OK).json(hireData.dataValues);
 	})
 	
 }

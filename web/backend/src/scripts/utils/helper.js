@@ -6,15 +6,21 @@ const passwordHash = (password) => {
 }
 
 const generateAccessToken = (user) => {
-    return JWT.sign({name: user.id, ...user}, process.env.ACCESS_TOKEN_SECRET_KEY, {expiresIn: "1w"})
+    return JWT.sign({id: user.id}, process.env.ACCESS_TOKEN_SECRET_KEY, {expiresIn: "1w"})
 }
 
 const generateRefreshToken = (user) => {
-    return JWT.sign({name: user.id, ...user}, process.env.REFRESH_TOKEN_SECRET_KEY,)
+    return JWT.sign({id: user.id}, process.env.REFRESH_TOKEN_SECRET_KEY,)
+}
+
+const getUserId = (headers) => {
+	const decoded = JWT.verify(headers?.authorization?.split(' ')[1], process.env.ACCESS_TOKEN_SECRET_KEY)
+	return decoded.id
 }
 
 module.exports = {
     passwordHash,
     generateAccessToken,
-    generateRefreshToken
+    generateRefreshToken,
+	getUserId
 }

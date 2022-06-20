@@ -1,6 +1,6 @@
 const httpStatus = require("http-status");
 const {
-	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR
+	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR, FOREIGN_KEY_ERROR
 
 } = require("../scripts/error/errorMessages");
 
@@ -36,6 +36,9 @@ const errorHandler = (err, req, res, next) => {
 			return ;
 		case INVALID_TOKEN_ERROR.name:
 			sendRequest(res, INVALID_TOKEN_ERROR.message, INVALID_TOKEN_ERROR.status);
+		case FOREIGN_KEY_ERROR.name:
+			sendRequest(res, FOREIGN_KEY_ERROR.message, FOREIGN_KEY_ERROR.status);
+			return ;
 		default:
 			sendRequest(res, INTERNAL_ERROR.message, INTERNAL_ERROR.status)
 			return ;

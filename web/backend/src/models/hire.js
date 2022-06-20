@@ -68,7 +68,9 @@ const Hire = sequelize.define('Hire', {
     }
 );
 
-Hire.removeAttribute('id')
+Hire.associate = function(models) {
+    Hire.hasMany(models.Job, {foreignKey: 'companyId'})
+};
 
 module.exports = {
     Hire
