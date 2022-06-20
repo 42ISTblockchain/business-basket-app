@@ -1,10 +1,10 @@
+const config = require('./config/config')
 const express = require('express')
 const routes = require('./routes')
-const config = require('./config')
 const helmet = require('helmet')
 const app = express()
 
-config()
+
 app.use(express.json())
 app.use(helmet())
 
