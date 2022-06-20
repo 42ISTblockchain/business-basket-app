@@ -1,5 +1,5 @@
-const BaseService = require('./base-services/base-service')
-const {Worker} = require('../models')
+const BaseService = require('../base-services/base-service')
+const {Worker} = require('../../models')
 
 class UserService extends BaseService {
     constructor() {

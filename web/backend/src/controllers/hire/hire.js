@@ -1,6 +1,6 @@
 const httpStatus = require('http-status')
-const Service = require('../services/hire')
-const {passwordHash, generateAccessToken, generateRefreshToken} = require("../scripts/utils/helper");
+const Service = require('../../services/hires/hire')
+const {passwordHash, generateAccessToken, generateRefreshToken} = require("../../scripts/utils/helper");
 const hireService = new Service()
 
 
