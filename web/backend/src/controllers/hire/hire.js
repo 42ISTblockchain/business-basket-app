@@ -26,7 +26,7 @@ class HireController {
     }
 
     async register(req, res) {
-        const hire = await hireService.register(req.body).then(hire => console.log(hire)).catch(err => console.log(err.errors))
+        const hire = await hireService.register(req.body).then(hire => console.log(hire)).catch(err => console.log(err))
         res.status(httpStatus.OK).json(hire)
     }
 }

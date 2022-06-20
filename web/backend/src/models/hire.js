@@ -3,6 +3,7 @@
 const Sequelize = require('sequelize');
 const {sequelize} = require('../config/database');
 const {passwordHash} = require('../scripts/utils/helper')
+const phoneValidation = /\d{3}-\d{3}-\d{4}/;
 
 const Hire = sequelize.define('Hire', {
         companyName: {
@@ -12,11 +13,14 @@ const Hire = sequelize.define('Hire', {
         email: {
             type: Sequelize.STRING,
             unique: true,
-            allowNull: false
+            allowNull: false,
+			validate: {
+				isEmail: true
+			}
         },
         password: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
         },
         taxNumber: {
             type: Sequelize.NUMERIC,
@@ -28,7 +32,12 @@ const Hire = sequelize.define('Hire', {
         },
         phoneNumber: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
+			validate : {
+				validator : function (value) {
+					return 	phoneValidation.test(value)
+				}
+			}
         },
         address: {
             type: Sequelize.STRING,
@@ -46,9 +55,11 @@ const Hire = sequelize.define('Hire', {
             type: Sequelize.STRING,
             allowNull: true
         },
-    }, {
+    },
+	{
         hooks: {
             beforeCreate: async (hire) => {
+				if (hire.password.length <= 6 && hire.password.length >= 20) throw new Error("Password err")
                 if(hire.password) hire.password = passwordHash(hire.password)
             }
         }
