@@ -6,11 +6,6 @@ Accept: application/json
 GET http://localhost:8000/api/hire/job
 Accept: application/json
 
-###
-DELETE http://localhost:8000/api/user/delete/5
-Content-Type: application/json
-
-{}
 
 ### Hire register
 POST http://localhost:8000/api/hire/register
@@ -49,13 +44,16 @@ Content-Type: application/json
   "categoryId": 1
 }
 
-###
-PUT http://localhost:8000/api/user/update/5
+### Hire job update
+PUT http://localhost:8000/api/hire/job/update/4
 Content-Type: application/json
 
 {
-  "firstName": "Ali",
-  "lastName": "Karabay"
+  "description": "Açıklama"
 }
 
 ###
+DELETE http://localhost:8000/api/hire/job/delete/3
+Content-Type: application/json
+
+{}
