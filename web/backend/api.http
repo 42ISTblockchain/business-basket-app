@@ -3,9 +3,9 @@ POST http://localhost:8000/api/hire/register
 Content-Type: application/json
 
 {
-  "companyName": "Ali",
-  "email": "fatiaoıusdd5sssvadsssvh123ascv456skljb78@kar.com",
-  "password": "12344354354",
+  "companyName": "Hilton Otel",
+  "email": "hilton@hilton.com",
+  "password": "123456",
   "taxNumber": "1234576",
   "taxOffice": "office",
   "phoneNumber": "5435235485",
@@ -17,22 +17,25 @@ POST http://localhost:8000/api/hire/login
 Content-Type: application/json
 
 {
-  "email": "fatih123@kar.com",
-  "password": "1234567"
+  "email": "hilton@hilton.com",
+  "password": "123456"
 }
 
 ### Hire job create
 POST http://localhost:8000/api/hire/job/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTczLCJpYXQiOjE2NTU3NjM5ODcsImV4cCI6MTY1NjM2ODc4N30.y8VkQrHyAwC85TxUsRGVbUz6m6HV9Xmk2RFts0l7_8Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTY1NTgyMDg0NiwiZXhwIjoxNjU2NDI1NjQ2fQ.qZ2IYsQl7HgkJar-iN-YSbF6CxndHRz1zFsNacVxMPw
 
 {
-  "description": "test description",
+  "description": "Bulaşıkcı",
   "gender": "male",
   "startDate": "2022-06-20T12:49:23.471Z",
   "endDate": "2022-06-20T12:49:23.471Z",
-  "companyId": 191,
-  "categoryId": 1
+  "jobCategoryId": 1,
+  "price" : 4325.454,
+  "workerCount" : 5,
+  "address": "istanbul"
+
 }
 
 ### Hire job list

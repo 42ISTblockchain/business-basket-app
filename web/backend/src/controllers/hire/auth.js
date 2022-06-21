@@ -14,10 +14,10 @@ class HireController {
 		req.body.password = passwordHash(req.body.password)
         let hire = await hireService.login(req.body)
 		if (!hire){
-			throw new CustomError(LOGIN_NAME, USER_NOT_FOUND, httpStatus.NOT_FOUND)
+			throw new CustomError(LOGIN_ERROR.name, LOGIN_ERROR.message, LOGIN_ERROR.status)
 		}
 		hire = {
-			companyId: hire.id,
+			hireId: hire.id,
 			tokens: {
 				access_token: generateAccessToken(hire),
 				refresh_token: generateRefreshToken(hire)

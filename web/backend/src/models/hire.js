@@ -59,7 +59,7 @@ const Hire = sequelize.define('Hire', {
 	{
         hooks: {
             beforeCreate: async (hire) => {
-				if (hire.password.length <= 6){
+				if (hire.password.length < 6){
 					throw new CustomError(PASSWORD_ERROR.name, PASSWORD_ERROR.message, httpStatus.BAD_REQUEST)
 				}
                 if(hire.password) hire.password = passwordHash(hire.password)
@@ -69,7 +69,7 @@ const Hire = sequelize.define('Hire', {
 );
 
 Hire.associate = function(models) {
-    Hire.hasMany(models.Job, {foreignKey: 'companyId'})
+    Hire.hasMany(models.Job, {foreignKey: 'hireId'})
 };
 
 module.exports = {

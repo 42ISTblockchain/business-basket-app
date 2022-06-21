@@ -6,7 +6,7 @@ const jobApplicationService = new Service()
 
 class JobApplicationController {
 	list(req, res) {
-		const jobs = jobApplicationService.list({where: {companyId: getUserId(req.headers)}})
+		const jobs = jobApplicationService.list({where: {hireId: getUserId(req.headers)}})
 		res.status(httpStatus.OK).json(jobs)
 	}
 }
