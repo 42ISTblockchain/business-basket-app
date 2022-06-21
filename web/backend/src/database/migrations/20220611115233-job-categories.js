@@ -2,31 +2,22 @@
 
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Comments', {
+        await queryInterface.createTable('JobCategories', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            from: {
-                type: Sequelize.INTEGER,
+            name: {
+                type: Sequelize.STRING,
                 allowNull: false
             },
-            to: {
-                type: Sequelize.INTEGER,
-                allowNull: false
+            status: {
+                type: Sequelize.BOOLEAN,
+                default: true,
             },
-            content: {
-                type: Sequelize.STRING(500),
-            },
-            stars: {
-                type: Sequelize.INTEGER,
-            },
-            jobId: {
-                type: Sequelize.INTEGER,
-            },
-            createdAt: {
+			createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
             },
@@ -42,6 +33,6 @@ module.exports = {
     },
 
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('Comments');
+        await queryInterface.dropTable('JobCategories');
     }
 };

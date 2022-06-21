@@ -46,9 +46,9 @@ module.exports = {
         default: false,
         allowNull: true,
       },
-	  birthDay: {
-        allowNull: false,
+      birthDay: {
         type: Sequelize.DATE,
+        allowNull: true,
       },
       gender: {
         type: Sequelize.ENUM("male", "female"),
@@ -66,6 +66,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      workPermitType: {
+        type: Sequelize.ENUM("studens", "sgk", "foreign"),
+        allowNull: true,
+      },
+	  sgkNo: {
+		type: Sequelize.INTEGER,
+		allowNull: true,
+	  },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
