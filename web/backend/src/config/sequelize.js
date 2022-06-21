@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+require("../config/config");
 module.exports = {
     development: {
         username: process.env.DB_USERNAME,

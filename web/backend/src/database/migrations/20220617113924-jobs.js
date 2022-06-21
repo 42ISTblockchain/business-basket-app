@@ -25,7 +25,7 @@ module.exports = {
                 type: Sequelize.DATE,
                 allowNull: false
             },
-            companyId: {
+            hireId: {
                 type: Sequelize.INTEGER,
                 references: {
                     model: 'Hires',
@@ -33,7 +33,7 @@ module.exports = {
                 },
                 allowNull: false
             },
-            categoryId: {
+            job: {
                 type: Sequelize.INTEGER,
                 allowNull: false
             },
@@ -49,11 +49,6 @@ module.exports = {
     },
 
     async down(queryInterface, Sequelize) {
-        /**
-         * Add reverting commands here.
-         *
-         * Example:
-         * await queryInterface.dropTable('users');
-         */
+        await queryInterface.dropTable('Jobs');
     }
 };

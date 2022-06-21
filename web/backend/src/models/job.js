@@ -20,7 +20,7 @@ const Job = sequelize.define('Job', {
             type: Sequelize.DATE,
             allowNull: false
         },
-        companyId: {
+        hireId: {
             type: Sequelize.INTEGER,
             references: {
                 model: 'Hires',
@@ -28,7 +28,7 @@ const Job = sequelize.define('Job', {
             },
             allowNull: false
         },
-        categoryId: {
+        jobCategoryId: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
