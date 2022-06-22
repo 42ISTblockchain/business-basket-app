@@ -1,6 +1,6 @@
 'use strict';
 
-const httpStatus = require("http-status");
+const HttpStatus = require("http-status");
 const Sequelize = require('sequelize');
 const { sequelize } = require('../config/database');
 const CustomError = require('../scripts/error/CustomError');
@@ -55,7 +55,7 @@ const Hire = sequelize.define('Hire', {
 		hooks: {
 			beforeCreate: async (hire) => {
 				if (hire.password.length < 6) {
-					throw new CustomError(PASSWORD_ERROR.name, PASSWORD_ERROR.message, httpStatus.BAD_REQUEST)
+					throw new CustomError(PASSWORD_ERROR)
 				}
 				if (hire.password) hire.password = passwordHash(hire.password)
 			}
@@ -66,6 +66,7 @@ const Hire = sequelize.define('Hire', {
 Hire.associate = function (models) {
 	Hire.hasMany(models.Job, { foreignKey: 'hireId' })
 };
+
 
 module.exports = {
 	Hire

@@ -1,38 +1,48 @@
-const Service = require('../../services/hires/hire')
-const CustomError = require('../../scripts/error/CustomError');
-const httpStatus = require('http-status')
+const HireService = require("../../services/hires/hire");
+const CustomError = require("../../scripts/error/CustomError");
 const errorWrapper = require("../../scripts/error/errorWrapper");
-const {passwordHash, generateAccessToken, generateRefreshToken} = require("../../scripts/utils/helper");
-const {LOGIN_ERROR} = require("../../scripts/error/errorMessages");
+const { CREATED, OK } = require("http-status");
+const {
+  passwordHash,
+  generateAccessToken,
+  generateRefreshToken,
+} = require("../../scripts/utils/helper");
+const {
+  LOGIN_ERROR,
+  VALUE_NULL_ERROR,
+} = require("../../scripts/error/errorMessages");
 
-const hireService = new Service()
-
+const hire = new HireService();
 
 class HireController {
+  login = errorWrapper(async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) throw new CustomError(VALUE_NULL_ERROR);
 
-    login = errorWrapper(async (req, res) => {
-		req.body.password = passwordHash(req.body.password)
-        let hire = await hireService.login(req.body)
-		if (!hire){
-			throw new CustomError(LOGIN_ERROR.name, LOGIN_ERROR.message, LOGIN_ERROR.status)
-		}
-		hire = {
-			hireId: hire.id,
-			tokens: {
-				access_token: generateAccessToken(hire),
-				refresh_token: generateRefreshToken(hire)
-			}
-		}
-		delete hire.password
-		res.status(httpStatus.OK).send(hire)
-    })
+    let response = await hire.login({
+      email,
+      password: passwordHash(password),
+    });
 
-    register = errorWrapper(async (req, res) => {
-		let hireData = await hireService.register(req.body)
-		delete hireData.dataValues.password
-		res.status(httpStatus.OK).json(hireData.dataValues);
-	})
-	
+    if (!response) throw new CustomError(LOGIN_ERROR);
+
+    const { id, companyName } = response.dataValues;
+
+    res.status(OK).json({
+      id,
+      tokens: {
+        access_token: generateAccessToken({ id, email, companyName }),
+        refresh_token: generateRefreshToken({ id, email, companyName }),
+      },
+    });
+  });
+
+  register = errorWrapper(async (req, res) => {
+    console.log(req.body);
+    let hireData = await hire.register(req.body);
+	console.log(hireData)
+    res.status(CREATED).json(hireData.dataValues);
+  });
 }
 
-module.exports = new HireController()
+module.exports = new HireController();

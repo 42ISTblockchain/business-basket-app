@@ -1,4 +1,4 @@
-const httpStatus = require("http-status");
+const HttpStatus = require("http-status");
 const {
 	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR, FOREIGN_KEY_ERROR
 
@@ -17,10 +17,10 @@ const errorHandler = (err, req, res, next) => {
 
 	switch (err.name) {
 		case "SequelizeUniqueConstraintError":
-			sendRequest(res, err.errors[0].message, httpStatus.BAD_REQUEST);
+			sendRequest(res, err.errors[0].message, HttpStatus.BAD_REQUEST);
 			return ;
 		case "SequelizeValidationError":
-			sendRequest(res, err.errors[0].message, httpStatus.BAD_REQUEST);
+			sendRequest(res, err.errors[0].message, HttpStatus.BAD_REQUEST);
 			return ;
 		case PASSWORD_ERROR.name:
 			sendRequest(res, PASSWORD_ERROR.message, PASSWORD_ERROR.status);

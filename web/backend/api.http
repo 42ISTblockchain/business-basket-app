@@ -4,12 +4,14 @@ Content-Type: application/json
 
 {
   "companyName": "Hilton Otel",
-  "email": "hilton@hilton.com",
+  "email": "hilton13@hiltonn.com",
   "password": "123456",
   "taxNumber": "1234576",
   "taxOffice": "office",
   "phoneNumber": "5435235485",
-  "address": "adress"
+  "address": "adress",
+  "id": 1,
+  "asdsad": 3243
 }
 
 ### Hire Login
@@ -24,7 +26,7 @@ Content-Type: application/json
 ### Hire job create
 POST http://localhost:8000/api/hire/job/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTY1NTgyMDg0NiwiZXhwIjoxNjU2NDI1NjQ2fQ.qZ2IYsQl7HgkJar-iN-YSbF6CxndHRz1zFsNacVxMPw
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTY1NTgyMDg0NiwiZXhwIjoxNjU2NDI1NjQ2fQ.qZ2IYsQl7HgkJar-iN-YSbF6CxndHRz1zFsNacVxMPw
 
 {
   "description": "Bulaşıkcı",

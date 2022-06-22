@@ -1,10 +1,10 @@
 const BaseService = require('../base-services/base-service')
 const {Worker} = require('../../models')
 
-class UserService extends BaseService {
+class WorkerService extends BaseService {
     constructor() {
         super(Worker)
     }
 }
 
-module.exports = UserService
+module.exports = WorkerService

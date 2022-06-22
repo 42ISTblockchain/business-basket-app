@@ -5,9 +5,10 @@ const JobApplicationController = require('../controllers/hire/job-application')
 const validate = require('../middleware/validate')
 const schemas = require("../validations/hire");
 const authenticate = require('../middleware/auth')
+const requestFiler = require("../middleware/requestFilter")
 
 router.route('/login').post(validate(schemas.loginValidation), HireController.login)
-router.post('/register', HireController.register)
+router.post('/register', requestFiler, HireController.register)
 
 router.get('/job', authenticate, JobController.list)
 router.post('/job/create', authenticate, JobController.create)
