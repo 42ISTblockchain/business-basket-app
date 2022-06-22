@@ -3,21 +3,25 @@
 const Sequelize = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const JobCategory = sequelize.define('JobCategory', {
+const Language = sequelize.define('Language', {
 	name: {
 		type: Sequelize.STRING,
-		allowNull: false
+		allowNull: false,
 	},
-	status: {
-		type: Sequelize.BOOLEAN,
-		default: true,
+	createdAt: {
+		allowNull: false,
+		type: Sequelize.DATE,
+	},
+	updatedAt: {
+		allowNull: false,
+		type: Sequelize.DATE,
 	},
 	deletedAt: {
 		allowNull: true,
 		type: Sequelize.DATE,
-	}
+	},
 });
 
 module.exports = {
-	JobCategory
+	Language
 };
