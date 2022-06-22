@@ -4,14 +4,12 @@ Content-Type: application/json
 
 {
   "companyName": "Hilton Otel",
-  "email": "hilton13@hiltonn.com",
+  "email": "hilton14@hiltonn.com",
   "password": "123456",
   "taxNumber": "1234576",
   "taxOffice": "office",
   "phoneNumber": "5435235485",
-  "address": "adress",
-  "id": 1,
-  "asdsad": 3243
+  "address": "adress"
 }
 
 ### Hire Login

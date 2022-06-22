@@ -38,10 +38,26 @@ class HireController {
   });
 
   register = errorWrapper(async (req, res) => {
-    console.log(req.body);
-    let hireData = await hire.register(req.body);
-	console.log(hireData)
-    res.status(CREATED).json(hireData.dataValues);
+    const {
+      companyName,
+      email,
+      password,
+      taxNumber,
+      taxOffice,
+      phoneNumber,
+      address,
+    } = req.body;
+
+    await hire.register({
+      companyName,
+      email,
+      password,
+      taxNumber,
+      taxOffice,
+      phoneNumber,
+      address,
+    });
+    res.status(CREATED).end();
   });
 }
 
