@@ -1,7 +1,7 @@
 const HttpStatus = require('http-status')
-const Service = require('../services/workers/worker')
+const Service = require('../../services/workers/worker')
 const userService = new Service()
-const {passwordHash} = require('../scripts/utils/helper')
+const {passwordHash} = require('../../scripts/utils/helper')
 
 class Worker {
     async index(req, res) {

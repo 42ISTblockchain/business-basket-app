@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "companyName": "Hilton Otel",
-  "email": "hilton14@hiltonn.com",
+  "email": "hilton@hilton.com",
   "password": "123456",
   "taxNumber": "1234576",
   "taxOffice": "office",

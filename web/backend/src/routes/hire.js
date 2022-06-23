@@ -1,20 +1,21 @@
-const router = require('express').Router()
-const HireController = require('../controllers/hire/auth')
+const hireRouter = require('express').Router()
+const AuthController = require('../controllers/auth')
+const registerReqFilter = require("../middleware/register/registerReqFilter")
+const {Hire} = require("../models")
 const JobController = require('../controllers/hire/job')
 const JobApplicationController = require('../controllers/hire/job-application')
-const validate = require('../middleware/validate')
-const schemas = require("../validations/hire");
 const authenticate = require('../middleware/auth')
-const requestFiler = require("../middleware/requestFilter")
 
-router.route('/login').post(validate(schemas.loginValidation), HireController.login)
-router.post('/register', requestFiler, HireController.register)
+const {login, register} = new AuthController(Hire)
 
-router.get('/job', authenticate, JobController.list)
-router.post('/job/create', authenticate, JobController.create)
-router.put('/job/update/:id', authenticate, JobController.update)
-router.delete('/job/delete/:id', authenticate, JobController.delete)
+hireRouter.post('/login', login)
+hireRouter.post('/register', registerReqFilter, register)
 
-router.get('/job-application', authenticate, JobApplicationController.list)
+// hireRouter.get('/job', authenticate, JobController.list)
+// hireRouter.post('/job/create', authenticate, JobController.create)
+// hireRouter.put('/job/update/:id', authenticate, JobController.update)
+// hireRouter.delete('/job/delete/:id', authenticate, JobController.delete)
 
-module.exports = router
+// hireRouter.get('/job-application', authenticate, JobApplicationController.list)
+
+module.exports = hireRouter

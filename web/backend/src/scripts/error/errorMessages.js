@@ -19,7 +19,7 @@ module.exports = {
 	VALUE_NULL_ERROR : {
 		name: "Value Error",
 		message : "Value must not empty !",
-		status: HttpStatus.BAD_REQ
+		status: HttpStatus.BAD_REQUEST
 	},
 	LOGIN_ERROR : {
 		name: "Login Error",

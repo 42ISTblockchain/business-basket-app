@@ -1,9 +1,8 @@
 const HttpStatus = require('http-status')
 const errorWrapper = require('../../scripts/error/errorWrapper')
 const Service = require('../../services/hires/job')
-const JWT = require('jsonwebtoken')
 const { getUserId } = require('../../scripts/utils/helper')
-const { Hire, Job } = require('../../models')
+
 const jobService = new Service()
 
 

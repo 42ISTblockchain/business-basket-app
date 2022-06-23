@@ -1,13 +1,14 @@
-class AuthBaseService {
+class AuthService {
   constructor(model) {
-    this.BaseModel = model;
+    this.BaseModel = model
   }
 
   async login(loginData) {
     return this.BaseModel?.findOne({
       attributes: { exclude: ["password"] },
+      raw: true,
       where: loginData,
-    });
+    })
   }
 
   async register(registerData) {
@@ -19,6 +20,7 @@ class AuthBaseService {
 
   // TODO: Implement user reset password
   async resetPassword(userData) {
+
     return this.BaseModel?.update(
       { password: userData.password },
       { where: { id: userData.id } }
@@ -26,4 +28,4 @@ class AuthBaseService {
   }
 }
 
-module.exports = AuthBaseService;
+module.exports = AuthService;

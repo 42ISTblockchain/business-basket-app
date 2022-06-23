@@ -1,0 +1,23 @@
+### Worker register
+POST http://localhost:8000/api/worker/register
+Content-Type: application/json
+
+{
+  "firstName": "Worker",
+  "lastName": "Example",
+  "email": "worker3@worker.com",
+  "password": "123456",
+  "phoneNumber": "5436789032",
+  "gender": "male",
+  "nationality": 3
+}
+
+
+### Worker Login
+POST http://localhost:8000/api/worker/login
+Content-Type: application/json
+
+{
+  "email": "worker3@worker.com",
+  "password": "1234567"
+}

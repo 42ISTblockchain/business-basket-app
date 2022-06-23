@@ -1,8 +1,7 @@
 const HttpStatus = require("http-status");
 const {
-	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR, FOREIGN_KEY_ERROR
-
-} = require("../scripts/error/errorMessages");
+	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR, FOREIGN_KEY_ERROR, VALUE_NULL_ERROR
+} = require("../../scripts/error/errorMessages");
 
 function sendRequest(res, msg, statusCode){
 	res.status(statusCode)
@@ -36,6 +35,10 @@ const errorHandler = (err, req, res, next) => {
 			return ;
 		case INVALID_TOKEN_ERROR.name:
 			sendRequest(res, INVALID_TOKEN_ERROR.message, INVALID_TOKEN_ERROR.status);
+			return ;
+		case VALUE_NULL_ERROR.name:
+			sendRequest(res, VALUE_NULL_ERROR.message, VALUE_NULL_ERROR.status);
+			return ;
 		case FOREIGN_KEY_ERROR.name:
 			sendRequest(res, FOREIGN_KEY_ERROR.message, FOREIGN_KEY_ERROR.status);
 			return ;

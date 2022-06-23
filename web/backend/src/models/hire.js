@@ -1,6 +1,5 @@
 'use strict';
 
-const HttpStatus = require("http-status");
 const Sequelize = require('sequelize');
 const { sequelize } = require('../config/database');
 const CustomError = require('../scripts/error/CustomError');

@@ -1,14 +1,14 @@
 require('./config/config')
 const express = require('express')
-const routes = require('./routes')
+const APIRoutes = require('./routes')
 const helmet = require('helmet')
+const errorHandler = require("./middleware/error/errorHandler")
 const app = express()
-const errorHandler = require("./middleware/errorHandler")
 
 
 app.use(helmet())
 app.use(express.json())
-app.use('/api', routes)
+app.use('/api', APIRoutes)
 app.use(errorHandler)
 
 

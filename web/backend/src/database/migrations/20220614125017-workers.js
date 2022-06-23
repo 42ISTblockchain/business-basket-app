@@ -25,6 +25,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      role: {
+        type: Sequelize.STRING,
+        default: "worker"
+      },
       emailVerified: {
         type: Sequelize.DATE,
         allowNull: true,
@@ -70,10 +74,10 @@ module.exports = {
         type: Sequelize.ENUM("studens", "sgk", "foreign"),
         allowNull: true,
       },
-	  sgkNo: {
-		type: Sequelize.INTEGER,
-		allowNull: true,
-	  },
+      sgkNo: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
