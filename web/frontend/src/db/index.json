@@ -1,0 +1,30 @@
+{
+  "works": [
+    {
+      "id": 1,
+      "description": "Description Mesajı Description Mesajı Description Mesajı Description Mesajı Description Mesajı Description MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription MesajıDescription Mesajı",
+      "gender": "male",
+      "startDate": "10-022-2021 08:00",
+      "endDate": "15-022-2021 17:00",
+      "price": 4500,
+      "tip": false,
+      "workerCount": 5,
+      "city": "Ankara",
+      "address": "Adres Bilgisi",
+      "job": "Hostes"
+    },
+    {
+        "id": 2,
+        "description": "Description Mesajı",
+        "gender": "male",
+        "startDate": "10-022-2021 08:00",
+        "endDate": "15-022-2021 17:00",
+        "price": 4500,
+        "tip": false,
+        "workerCount": 5,
+        "city": "Ankara",
+        "address": "Adres Bilgisi",
+        "job": "Hostes"
+      }
+  ]
+}

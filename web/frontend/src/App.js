@@ -1,17 +1,15 @@
-import { routes } from "./routes";
-import { Route, Routes } from "react-router-dom";
 
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 
 function App() {
-	return (
-		<div>
-			<Routes>
-				{routes.map(route => (
-					<Route key={route.id} path={route.path} exact={route.exact} element={<route.component />} />
-				))}
-			</Routes>
-		</div>
-	);
+  return (
+    <div>
+      <Navbar />
+      <Sidebar />
+
+    </div>
+  );
 }
 
 export default App;
