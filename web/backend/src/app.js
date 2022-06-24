@@ -5,7 +5,6 @@ const helmet = require('helmet')
 const errorHandler = require("./middleware/error/errorHandler")
 const app = express()
 const cors = require('cors')
-const errorHandler = require("./middleware/errorHandler")
 
 app.use(cors({
 	origin: process.env.APP_URL
