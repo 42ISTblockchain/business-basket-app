@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function InfoModal(info) {
-  console.log(info);
   return (
     <div className="modal" id="infoModal">
       <div className="modal-box">
