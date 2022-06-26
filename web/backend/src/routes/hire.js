@@ -11,11 +11,11 @@ const {login, register} = new AuthController(Hire)
 hireRouter.post('/login', login)
 hireRouter.post('/register', registerReqFilter, register)
 
-// hireRouter.get('/job', authenticate, JobController.list)
-// hireRouter.post('/job/create', authenticate, JobController.create)
-// hireRouter.put('/job/update/:id', authenticate, JobController.update)
-// hireRouter.delete('/job/delete/:id', authenticate, JobController.delete)
+hireRouter.get('/job', authenticate, JobController.list)
+hireRouter.post('/job/create', authenticate, JobController.create)
+hireRouter.put('/job/update/:id', authenticate, JobController.update)
+hireRouter.delete('/job/delete/:id', authenticate, JobController.delete)
 
-// hireRouter.get('/job-application', authenticate, JobApplicationController.list)
+hireRouter.get('/job-application', authenticate, JobApplicationController.list)
 
 module.exports = hireRouter

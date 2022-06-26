@@ -2,13 +2,23 @@ const HttpStatus = require('http-status')
 const errorWrapper = require('../../scripts/error/errorWrapper')
 const Service = require('../../services/hires/job')
 const { getUserId } = require('../../scripts/utils/helper')
+const {Job} = require("../../models/job");
+const {JobCategory} = require("../../models/job-category");
+const {City} = require("../../models/city");
 
 const jobService = new Service()
 
 
 class JobController {
     list = errorWrapper(async (req, res) => {
-        const jobs = await jobService.list({where: {hireId: getUserId(req.headers)}})
+        const jobs = await jobService.list({
+                where: {hireId: getUserId(req.headers)},
+                order: [['id', 'DESC']],
+                include: [
+                    {model: JobCategory, attributes:['name'], as: 'category'},
+                    {model: City, attributes:['name'], as: 'city'}
+                ]
+            })
         res.status(HttpStatus.OK).json(jobs)
     })
 

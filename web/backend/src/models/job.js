@@ -65,6 +65,11 @@ const Job = sequelize.define("Job", {
 	},
 });
 
+Job.associate = function (models) {
+	Job.hasOne(models.JobCategory, {as: 'category', foreignKey: "id", sourceKey: 'jobCategoryId'});
+	Job.hasOne(models.City, {as: 'city', foreignKey: "id", sourceKey: 'cityId'});
+};
+
 module.exports = {
 	Job,
 };

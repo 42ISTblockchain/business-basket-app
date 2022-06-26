@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import {request} from "../../helper/request";
+import {http} from "../../helper/http";
 import {loginData} from "../../slice/authSlice";
 import {useForm} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ export default function Login() {
 
     function login(data) {
         console.log(auth);
-        request.post("/hire/login", {
+        http.post("/hire/login", {
             email: data.email,
             password: data.password,
         }).then((res) => {
