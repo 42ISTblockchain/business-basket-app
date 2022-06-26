@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import InfoModal from "../components/modals/InfoModal";
 import JobCreateModal from "../components/modals/JobCreateModal";
-import { request } from "../helper/request";
+import { http } from "../helper/http";
 import { useSelector, useDispatch } from "react-redux";
 import { loadData } from "../slice/JobListSlice";
 import JobEditModal from "../components/modals/JobEditModal";
@@ -13,7 +13,7 @@ export default function Jobs() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    request.get("/works").then((res) => dispatch(loadData(res.data)));
+    http.get("/hire/job").then((res) => dispatch(loadData(res.data)));
   }, []);
 
   return (
@@ -22,9 +22,9 @@ export default function Jobs() {
       <JobCreateModal />
       {job && <JobEditModal props={job}/> }
       <div className="flex mb-6 justify-between">
-        <label htmlFor="jobCreateModal" className="btn btn-primary">
+        <a href="#jobCreateModal" className="btn btn-primary">
           İş Ekle
-        </label>
+        </a>
       </div>
       <div className="overflow-x-auto sm:table-fixed">
         <table className="table w-full">
@@ -45,12 +45,12 @@ export default function Jobs() {
               jobList.map((job) => {
                 return (
                   <tr className="hover" key={job.id}>
-                    <th>{job.job}</th>
+                    <th>{job.category.name}</th>
                     <td>{job.startDate}</td>
                     <td>{job.endDate}</td>
                     <td>{job.price}</td>
                     <td>{job.workerCount}</td>
-                    <td>{job.city}</td>
+                    <td>{job.city.name}</td>
                     <td>{job.gender}</td>
                     <td>
                       <a

@@ -1,23 +1,19 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const { sequelize } = require('../config/database');
+const {sequelize} = require('../config/database');
 
 const City = sequelize.define('City', {
-	name: {
+    name: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      countryCode: {
-        type: Sequelize.INTEGER,
+    },
+    countryCode: {
+        type: Sequelize.STRING(3),
         allowNull: false,
-        references: {
-          model: "Countries",
-          key: "id",
-        },
-      },
+    },
 });
 
 module.exports = {
-	City
+    City
 };

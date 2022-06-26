@@ -25,7 +25,7 @@ Content-Type: application/json
 ### Hire job create
 POST http://localhost:8000/api/hire/job/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbjJAaGlsdG9uLmNvbSIsImlhdCI6MTY1NjI1MTU3MiwiZXhwIjoxNjU2ODU2MzcyfQ.4P6SBQd7O0acJ--EsQ2HGEZrP94EclgRj-Gtiz-YJ2M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU2MjgwODQxLCJleHAiOjE2NTY4ODU2NDF9.ftPL3oHhQHmiATWdc8tlPt7S5EUf2MNt3-zHTdHG5Tk
 
 {
   "description": "Bulaşıkcı",
@@ -33,6 +33,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6I
   "startDate": "2022-06-20T12:49:23.471Z",
   "endDate": "2022-06-20T12:49:23.471Z",
   "jobCategoryId": 1,
+  "cityId": 1,
   "price" : 4325.454,
   "workerCount" : 5,
   "address": "istanbul"
@@ -40,10 +41,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6I
 }
 
 ### Hire job list
-GET http://localhost:8000/api/hire/job
+GET http://localhost:8000/api/generic/city
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU2MjUwMjk2LCJleHAiOjE2NTY4NTUwOTZ9.HWtvlsjUtP8RGLELTxTiHRqXCk_gQFaKfpMy79By6qY
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU2MjgwODQxLCJleHAiOjE2NTY4ODU2NDF9.ftPL3oHhQHmiATWdc8tlPt7S5EUf2MNt3-zHTdHG5Tk
 
 {}
 
