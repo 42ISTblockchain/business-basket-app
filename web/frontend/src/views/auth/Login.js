@@ -20,7 +20,7 @@ export default function Login() {
         }).then((res) => {
             dispatch(loginData(res.data))
             localStorage.setItem('auth', JSON.stringify(res.data))
-            navigate("/job", {replace: true})
+            navigate("/hire", {replace: true})
         })
     }
 
