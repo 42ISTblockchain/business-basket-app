@@ -27,7 +27,7 @@ const Job = sequelize.define("Job", {
 	tip: {
 		type: Sequelize.BOOLEAN,
 		allowNull: false,
-		defaultValue: false,
+		defaultValue: true,
 	},
 	workerCount: {
 		type: Sequelize.INTEGER,
@@ -64,6 +64,7 @@ const Job = sequelize.define("Job", {
 		type: Sequelize.DATE,
 	},
 });
+
 
 module.exports = {
 	Job,

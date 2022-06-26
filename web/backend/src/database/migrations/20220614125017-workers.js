@@ -27,7 +27,7 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        default: "worker"
+        allowNull: false
       },
       emailVerified: {
         type: Sequelize.DATE,
@@ -47,8 +47,7 @@ module.exports = {
       },
       isBlocked: {
         type: Sequelize.BOOLEAN,
-        default: false,
-        allowNull: true,
+        allowNull: false,
       },
       birthDay: {
         type: Sequelize.DATE,
@@ -79,7 +78,7 @@ module.exports = {
         allowNull: true,
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
       updatedAt: {

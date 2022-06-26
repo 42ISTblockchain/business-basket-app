@@ -10,4 +10,4 @@ class JobApplicationController {
 	}
 }
 
-module.exports = new JobApplicationController()
+module.exports = JobApplicationController
