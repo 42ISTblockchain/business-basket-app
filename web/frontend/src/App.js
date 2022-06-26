@@ -1,15 +1,17 @@
-
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Login from "./views/auth/Login";
+
 
 function App() {
-  return (
-    <div>
-      <Navbar />
-      <Sidebar />
+    const auth = localStorage.getItem('auth');
 
-    </div>
-  );
+    return (
+        <div>
+            {auth ? <Navbar/> : <Login/>}
+            {/*{auth ? <Sidebar/> : <Login/>}*/}
+        </div>
+    );
 }
 
 export default App;
