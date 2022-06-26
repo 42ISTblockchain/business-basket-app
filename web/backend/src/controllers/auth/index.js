@@ -24,9 +24,12 @@ class AuthController {
 
     response = {
       id: response.id,
+      role: response.role,
+      email: response.email,
+      profile_image: "",
       tokens: {
-        access_token: generateAccessToken({ id: response.id }),
-        refresh_token: generateRefreshToken({ id: response.id }),
+        access_token: generateAccessToken({ id: response.id, role: response.role, email: response.email }),
+        refresh_token: generateRefreshToken({ id: response.id, role: response.role, email: response.email }),
       },
     };
     res.status(OK).json(response);

@@ -25,6 +25,11 @@ const Worker = sequelize.define("Workers", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  role: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "worker"
+  },
   emailVerified: {
     type: Sequelize.DATE,
     allowNull: true,
@@ -43,8 +48,8 @@ const Worker = sequelize.define("Workers", {
   },
   isBlocked: {
     type: Sequelize.BOOLEAN,
-    default: false,
-    allowNull: true,
+    defaultValue: false,
+    allowNull: false,
   },
   birthDay: {
     type: Sequelize.DATE,

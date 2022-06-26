@@ -1,9 +1,9 @@
 ### Hire register
-POST http://localhost:8000/api/hire/register
+POST http://localhost:8000/api/hire/auth/register
 Content-Type: application/json
 
 {
-  "companyName": "Hilton Otel",
+  "companyName": "Hilton Otel 2",
   "email": "hilton@hilton.com",
   "password": "123456",
   "taxNumber": "1234576",
@@ -14,18 +14,18 @@ Content-Type: application/json
 
 
 ### Hire Login
-POST http://localhost:8000/api/hire/login
+POST http://localhost:8000/api/hire/auth/login
 Content-Type: application/json
 
 {
-  "email": "hilton@hilton.com",
+  "email": "hilton2@hilton.com",
   "password": "123456"
 }
 
 ### Hire job create
 POST http://localhost:8000/api/hire/job/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU2MjU5NjMwfQ.dz_92eP9nqvUm0Sj4Xv8xtYkIWm835NaYthprYjGHjg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU2MjgwODQxLCJleHAiOjE2NTY4ODU2NDF9.ftPL3oHhQHmiATWdc8tlPt7S5EUf2MNt3-zHTdHG5Tk
 
 {
   "description": "Bulaşıkcı",
@@ -41,26 +41,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 }
 
 ### Hire job list
-GET http://localhost:8000/api/hire/job/
+GET http://localhost:8000/api/generic/city
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU2MjU5NjMwfQ.dz_92eP9nqvUm0Sj4Xv8xtYkIWm835NaYthprYjGHjg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU2MjgwODQxLCJleHAiOjE2NTY4ODU2NDF9.ftPL3oHhQHmiATWdc8tlPt7S5EUf2MNt3-zHTdHG5Tk
 
 {}
 
 ### Hire job update
-PUT http://localhost:8000/api/hire/job/update/8
+PUT http://localhost:8000/api/hire/job/update/956
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImNvbXBhbnlOYW1lIjoiQWxpIiwiZW1haWwiOiJmYXRpaDEyM0BrYXIuY29tIiwicGFzc3dvcmQiOiI5Mjg4YzUyMGM0YjViNDAxMTc3NjhiODRlZmViYjQ0NzlhZjg3ODE5YWZmNjdiYWM3Zjg4NTQ1MGU0MzNhMTFhIiwidGF4TnVtYmVyIjoiMTIzNDU3NiIsInRheE9mZmljZSI6Im9mZmljZSIsInBob25lTnVtYmVyIjoiNTQzNTIzNTQ4MiIsImFkZHJlc3MiOiJhZHJlc3MiLCJlbWFpbFZlcmlmaWVkIjpudWxsLCJyZW1lbWJlclRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkVG9rZW4iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiJ9LCJfcHJldmlvdXNEYXRhVmFsdWVzIjp7ImNvbXBhbnlOYW1lIjoiQWxpIiwiZW1haWwiOiJmYXRpaDEyM0BrYXIuY29tIiwicGFzc3dvcmQiOiI5Mjg4YzUyMGM0YjViNDAxMTc3NjhiODRlZmViYjQ0NzlhZjg3ODE5YWZmNjdiYWM3Zjg4NTQ1MGU0MzNhMTFhIiwidGF4TnVtYmVyIjoiMTIzNDU3NiIsInRheE9mZmljZSI6Im9mZmljZSIsInBob25lTnVtYmVyIjoiNTQzNTIzNTQ4MiIsImFkZHJlc3MiOiJhZHJlc3MiLCJlbWFpbFZlcmlmaWVkIjpudWxsLCJyZW1lbWJlclRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkVG9rZW4iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDYtMjBUMTk6NDg6NTkuMDA2WiJ9LCJ1bmlxbm8iOjEsIl9jaGFuZ2VkIjp7fSwiX29wdGlvbnMiOnsiaXNOZXdSZWNvcmQiOmZhbHNlLCJfc2NoZW1hIjpudWxsLCJfc2NoZW1hRGVsaW1pdGVyIjoiIiwicmF3Ijp0cnVlLCJhdHRyaWJ1dGVzIjpbImNvbXBhbnlOYW1lIiwiZW1haWwiLCJwYXNzd29yZCIsInRheE51bWJlciIsInRheE9mZmljZSIsInBob25lTnVtYmVyIiwiYWRkcmVzcyIsImVtYWlsVmVyaWZpZWQiLCJyZW1lbWJlclRva2VuIiwicmVzZXRQYXNzd29yZFRva2VuIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY1NTc1ODU1NiwiZXhwIjoxNjU2MzYzMzU2fQ.Ka08TklxlSA-G2gImn8jZFdKLSGt5JkyxrOEe7WzEUw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbjJAaGlsdG9uLmNvbSIsImlhdCI6MTY1NjI1NjQ2OSwiZXhwIjoxNjU2ODYxMjY5fQ.ZnYXLBjdoI2FawLdgc2U683MixJs2g1TfvgVDNw2TUU
 
 {
-	"description": "denemee"
+	"description": "Hilton 1",
+  "gender": "female"
 }
 
 
 ### Hire job delete
-DELETE http://localhost:8000/api/hire/job/delete/14
+DELETE http://localhost:8000/api/hire/job/delete/9
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbjJAaGlsdG9uLmNvbSIsImlhdCI6MTY1NjI1NjQ2OSwiZXhwIjoxNjU2ODYxMjY5fQ.ZnYXLBjdoI2FawLdgc2U683MixJs2g1TfvgVDNw2TUU
+
 
 {}
 

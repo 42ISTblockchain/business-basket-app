@@ -1,6 +1,6 @@
 const workerRouter = require('express').Router()
-const AuthController = require('../controllers/auth')
-const {Worker} = require("../models")
+const AuthController = require('../../controllers/auth')
+const {Worker} = require("../../models")
 
 const {login, register} = new AuthController(Worker)
 

@@ -43,7 +43,12 @@ module.exports = {
 	},
 	FOREIGN_KEY_ERROR : {
 		name: "SequelizeForeignKeyConstraintError",
-		message: "Company Not Found !",
+		message: "Foreign key not found !",
+		status: HttpStatus.BAD_REQUEST
+	},
+	BAD_REQ_ERROR : {
+		name: "Bad Request",
+		message: "Invalid request !",
 		status: HttpStatus.BAD_REQUEST
 	}
 

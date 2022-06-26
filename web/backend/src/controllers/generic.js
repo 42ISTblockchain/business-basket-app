@@ -4,7 +4,7 @@ const {JobCategory} = require("../models/job-category");
 
 class Generic {
     async city(req, res) {
-        const city = await City.findAll({where: {countryId: 1}})
+        const city = await City.findAll({where: {countryCode: 'TRY'}})
         res.status(HttpStatus.OK).send(city)
     }
 
