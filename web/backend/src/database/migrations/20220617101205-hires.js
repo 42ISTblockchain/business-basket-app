@@ -24,7 +24,7 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        default: "hire",
+        allowNull: false
       },
       taxNumber: {
         type: Sequelize.NUMERIC,
@@ -55,11 +55,11 @@ module.exports = {
         allowNull: true,
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
     });

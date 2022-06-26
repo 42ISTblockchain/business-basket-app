@@ -32,6 +32,11 @@ const Hire = sequelize.define('Hire', {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
+	role: {
+		type: Sequelize.STRING,
+		defaultValue: "hire",
+		allowNull: false
+	},
 	address: {
 		type: Sequelize.STRING,
 		allowNull: false

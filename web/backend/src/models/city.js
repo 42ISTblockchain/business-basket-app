@@ -8,7 +8,7 @@ const City = sequelize.define('City', {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      countryId: {
+      countryCode: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

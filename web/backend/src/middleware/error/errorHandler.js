@@ -1,6 +1,6 @@
 const HttpStatus = require("http-status");
 const {
-	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR, FOREIGN_KEY_ERROR, VALUE_NULL_ERROR
+	INTERNAL_ERROR, PASSWORD_ERROR, SYNTAX_ERROR, LOGIN_ERROR, AUTH_ERROR, INVALID_TOKEN_ERROR, FOREIGN_KEY_ERROR, VALUE_NULL_ERROR, BAD_REQ_ERROR
 } = require("../../scripts/error/errorMessages");
 
 function sendRequest(res, msg, statusCode){
@@ -41,6 +41,9 @@ const errorHandler = (err, req, res, next) => {
 			return ;
 		case FOREIGN_KEY_ERROR.name:
 			sendRequest(res, FOREIGN_KEY_ERROR.message, FOREIGN_KEY_ERROR.status);
+			return ;
+		case BAD_REQ_ERROR.name:
+			sendRequest(res, BAD_REQ_ERROR.message, BAD_REQ_ERROR.status);
 			return ;
 		default:
 			sendRequest(res, INTERNAL_ERROR.message, INTERNAL_ERROR.status)

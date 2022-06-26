@@ -1,5 +1,5 @@
 ### Worker register
-POST http://localhost:8000/api/worker/register
+POST http://localhost:8000/api/worker/auth/register
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 
 ### Worker Login
-POST http://localhost:8000/api/worker/login
+POST http://localhost:8000/api/worker/auth/login
 Content-Type: application/json
 
 {
