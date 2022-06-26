@@ -4,13 +4,19 @@ import Jobs from "../views/Jobs";
 export const routes = [
     {
         id: 1,
-        path: '/',
+        path: '/hire',
         exact: true,
         component: Home,
     },
     {
         id: 2,
-        path: '/job',
+        path: '/hire/job',
+        exact: true,
+        component: Jobs,
+    },
+    {
+        id: 3,
+        path: '/hire/applications',
         exact: true,
         component: Jobs,
     },

@@ -1,6 +1,12 @@
 import React from "react";
 
 export default function Navbar() {
+
+  function logout() {
+    localStorage.removeItem('auth');
+    window.location.reload();
+  }
+
   return (
     <div className="navbar bg-primary text-primary-content flex-shrink-0">
       <div className="navbar-start">
@@ -27,7 +33,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a className="btn btn-ghost normal-case text-xl">İş Sepeti</a>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
@@ -85,7 +91,7 @@ export default function Navbar() {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={() => logout()}>Çıkış yap</a>
             </li>
           </ul>
         </div>
