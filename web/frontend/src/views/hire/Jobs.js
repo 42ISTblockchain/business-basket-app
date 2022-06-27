@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import InfoModal from "../components/modals/InfoModal";
-import JobCreateModal from "../components/modals/JobCreateModal";
-import {http} from "../helper/http";
+import InfoModal from "../../components/modals/InfoModal";
+import JobCreateModal from "../../components/modals/JobCreateModal";
+import {http} from "../../helper/http";
 import {useSelector, useDispatch} from "react-redux";
-import {loadData} from "../slice/JobListSlice";
-import JobEditModal from "../components/modals/JobEditModal";
-import DeleteModal from "../components/modals/DeleteModal";
+import {loadData} from "../../slice/JobListSlice";
+import JobEditModal from "../../components/modals/JobEditModal";
+import DeleteModal from "../../components/modals/DeleteModal";
 
 export default function Jobs() {
     const [description, setDescription] = useState();
@@ -25,7 +25,7 @@ export default function Jobs() {
             {job && <JobEditModal props={job}/>}
             {job?.job?.id && <DeleteModal id={job?.job?.id} path="/hire/job/delete/"/>}
             <div className="flex mb-6 justify-between">
-                <a href="#jobCreateModal" className="btn btn-primary">
+                <a href="frontend/src/views/hire/Jobs#jobCreateModal" className="btn btn-primary">
                     İş Ekle
                 </a>
             </div>
@@ -57,7 +57,7 @@ export default function Jobs() {
                                     <td>{job.gender}</td>
                                     <td>
                                         <a
-                                            href="#infoModal"
+                                            href="frontend/src/views/hire/Jobs#infoModal"
                                             onClick={() =>
                                                 setDescription({
                                                     title: "İş Detayı",
@@ -71,11 +71,11 @@ export default function Jobs() {
                                           visibility
                                         </span>
                                         </a>
-                                        <a href="#jobEditModal" onClick={() => setJob({job})} className="mx-2 tooltip"
+                                        <a href="frontend/src/views/hire/Jobs#jobEditModal" onClick={() => setJob({job})} className="mx-2 tooltip"
                                            data-tip="Düzenle">
                                             <span className="material-symbols-rounded">edit</span>
                                         </a>
-                                        <a href="#deleteModal" onClick={() => setJob({job})} className="tooltip"
+                                        <a href="frontend/src/views/hire/Jobs#deleteModal" onClick={() => setJob({job})} className="tooltip"
                                            data-tip="Sil">
                                             <span className="material-symbols-rounded">close</span>
                                         </a>

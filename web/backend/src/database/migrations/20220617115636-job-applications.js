@@ -11,14 +11,30 @@ module.exports = {
             },
             jobId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: false,
+                references: {
+                    model: "Job",
+                    key: "id",
+                },
             },
             workerId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: false,
+                references: {
+                    model: "Worker",
+                    key: "id",
+                },
+            },
+            hireId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "Hire",
+                    key: "id",
+                },
             },
             status: {
-                type: Sequelize.BOOLEAN,
+                type: Sequelize.ENUM('pending', 'accepted', 'rejected'),
             },
 			createdAt: {
                 allowNull: false,
