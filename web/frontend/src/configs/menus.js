@@ -3,7 +3,7 @@ export const menus = {
         {
             id: 1,
             name: 'Anasayfa',
-            path: '/hire',
+            path: '/hire/',
             icon: 'dashboard',
             component: 'Dashboard'
         },
