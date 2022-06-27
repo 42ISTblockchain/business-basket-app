@@ -1,5 +1,6 @@
 import Home from "../views/Home";
 import Jobs from "../views/Jobs";
+import JobApplication from "../views/JobApplication";
 
 export const routes = [
     {
@@ -18,6 +19,6 @@ export const routes = [
         id: 3,
         path: '/hire/applications',
         exact: true,
-        component: Jobs,
+        component: JobApplication,
     },
 ]
