@@ -1,4 +1,4 @@
-import Login from "./views/auth/Login";
+import Login from "./views/hire/auth/Login";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {routes} from "./routes";
 import {ProtectedRoute, UnprotectedRoute} from "./helper/route-check";
@@ -11,13 +11,17 @@ function App() {
 
                 <Route path="/" element={<ProtectedRoute />}>
                     <Route path="/" element={<Navigate to="/hire" />} />
-                    {routes.map((route) => (
-                            <Route
-                                key={route.id}
-                                path={route.path}
-                                exact={route.exact}
-                                element={<Layout component={route.component} />}
-                            />
+                    {routes.map((route,index) => (
+                           route.children.map((child,index) => (
+                              <Route key={index} path={route.path}>
+                                  <Route
+                                      key={index}
+                                      path={child.path}
+                                      exact={child.exact}
+                                      element={<Layout component={child.component} />}
+                                  />
+                              </Route>
+                           ))
                         ))}
                 </Route>
 

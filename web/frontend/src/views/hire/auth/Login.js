@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import {http} from "../../helper/http";
-import {loginData} from "../../slice/authSlice";
+import {http} from "../../../helper/http";
+import {loginData} from "../../../slice/authSlice";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import ErrorAlert from "../../components/modals/ErrorAlert";
+import ErrorAlert from "../../../components/modals/ErrorAlert";
 
 export default function Login() {
     const auth = useSelector((state) => state.auth.value);
