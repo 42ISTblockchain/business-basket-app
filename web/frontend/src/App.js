@@ -1,5 +1,5 @@
 import Login from "./views/auth/Login";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {routes} from "./routes";
 import {ProtectedRoute, UnprotectedRoute} from "./helper/route-check";
 import Layout from "./components/Layout";
@@ -8,8 +8,10 @@ function App() {
     return (
         <>
             <Routes>
+
                 <Route path="/" element={<ProtectedRoute />}>
-                        {routes.map((route) => (
+                    <Route path="/" element={<Navigate to="/hire" />} />
+                    {routes.map((route) => (
                             <Route
                                 key={route.id}
                                 path={route.path}
