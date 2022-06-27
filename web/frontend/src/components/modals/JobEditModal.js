@@ -1,8 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import {http} from "../../helper/http";
 
 export default function JobEditModal(data) {
   const { job } = data.props;
+  const genders = [
+    {
+      key: 'male',
+      value: 'Erkek'
+    },
+    {
+      key: 'female',
+      value: 'Kadın'
+    },
+    {
+      key: 'both',
+      value: 'Her ikiside'
+    }
+  ]
   const {
     handleSubmit,
     register,
@@ -11,10 +26,18 @@ export default function JobEditModal(data) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    http.put('/hire/job/update/' + job.id, data).then(res => console.log(res))
     window.location.href = "#";
     reset();
   };
+
+  const [cities, setCity] = useState()
+  const [categories, setCategory] = useState()
+
+  useEffect(() => {
+    http.get("/generic/city").then((res) => setCity(res.data));
+    http.get("/generic/category").then((res) => setCategory(res.data));
+  }, []);
 
   return (
     <div>
@@ -35,6 +58,11 @@ export default function JobEditModal(data) {
                 <option disabled selected>
                   Seçiniz
                 </option>
+                {categories && categories.map(category =>
+                    <option key={category.id} selected={job.jobCategoryId === category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                )}
               </select>
             </div>
             <div className="form-control w-full ">
@@ -54,6 +82,36 @@ export default function JobEditModal(data) {
             </div>
             <div className="form-control w-full ">
               <label className="label">
+                <span className="label-text">İl</span>
+              </label>
+              <select className="select select-bordered w-full " {...register('cityId')}>
+                <option disabled selected>
+                  Seçiniz
+                </option>
+                {cities && cities.map(city =>
+                    <option key={city.id} selected={job.cityId === city.id} value={city.id}>
+                      {city.name}
+                    </option>
+                )}
+              </select>
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Cinsiyet</span>
+              </label>
+              <select className="select select-bordered w-full " {...register('gender')}>
+                <option disabled selected>
+                  Seçiniz
+                </option>
+                {genders.map(gender =>
+                    <option key={gender.value} selected={job.gender === gender.key} value={gender.key}>
+                      {gender.value}
+                    </option>
+                )}
+              </select>
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
                 <span className="label-text">Başlangıç Tarihi</span>
               </label>
               <input
@@ -61,7 +119,7 @@ export default function JobEditModal(data) {
                 type="datetime-local"
                 placeholder="Type here"
                 className="input input-bordered w-full"
-                defaultValue={job.startDate}
+                value={job.startDate.toString().slice(0, 16)}
               />
             </div>
             <div className="form-control w-full ">
@@ -71,9 +129,9 @@ export default function JobEditModal(data) {
               <input
                 {...register("endDate")}
                 type="datetime-local"
+                value={job.endDate.toString().slice(0, 16)}
                 placeholder="Type here"
                 className="input input-bordered w-full "
-                defaultValue={job.endDate}
               />
             </div>
           </div>
@@ -100,6 +158,13 @@ export default function JobEditModal(data) {
                 placeholder="Açıklama"
                 defaultValue={job.description}
               />
+            </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Adres</span>
+              </label>
+              <textarea className="textarea textarea-bordered" value={job.address} {...register('address')}
+                        placeholder="Adres"/>
             </div>
             <div className="form-control mt-3 w-full ">
               <label className="label cursor-pointer">

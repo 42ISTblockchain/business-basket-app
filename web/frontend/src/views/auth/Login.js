@@ -1,26 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {http} from "../../helper/http";
 import {loginData} from "../../slice/authSlice";
 import {useForm} from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import ErrorAlert from "../../components/modals/ErrorAlert";
 
 export default function Login() {
     const auth = useSelector((state) => state.auth.value);
     const dispatch = useDispatch();
     const {handleSubmit, register} = useForm();
+    const [error, setError] = useState();
     let navigate = useNavigate();
 
     function login(data) {
-        console.log(auth);
         http.post("/hire/auth/login", {
             email: data.email,
             password: data.password,
         }).then((res) => {
             dispatch(loginData(res.data))
             localStorage.setItem('auth', JSON.stringify(res.data))
+            console.log(res)
             navigate("/hire", {replace: true})
-        })
+        }).catch(err => setError(err.response.data.message))
     }
 
     return (
@@ -32,8 +34,9 @@ export default function Login() {
                         exercitationem quasi. In deleniti eaque aut ssrepudiandae et a id nisi.</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleSubmit(login)}>
-                        <div className="card-body">
+                    <div className="card-body">
+                        {error && <ErrorAlert error={error}/>}
+                        <form onSubmit={handleSubmit(login)}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -55,8 +58,8 @@ export default function Login() {
                             <div className="form-control mt-6">
                                 <button type="submit" className="btn btn-primary">Giriş yap</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
