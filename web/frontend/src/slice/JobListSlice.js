@@ -1,18 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	value: []
+	job: [],
+	currentJob: null
 }
 
 export const jobListSlice = createSlice({
 	name: "jobs",
 	initialState,
 	reducers: {
-		loadData: (state, action) => {
-			state.value = action.payload
+		allJobAction: (state, action) => {
+			state.job = action.payload
+		},
+		currentJobAction: (state, action) => {
+			state.currentJob = action.payload
 		}
 	}
 })
 
-export const {loadData} = jobListSlice.actions
+export const {allJobAction, currentJobAction} = jobListSlice.actions
 export default jobListSlice.reducer

@@ -1,6 +1,6 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
-import {menus} from "../configs/menus";
+import { NavLink } from "react-router-dom";
+import { menus } from "../configs/menus";
 
 export default function Sidebar({component: Component}) {
 
