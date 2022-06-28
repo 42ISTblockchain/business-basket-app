@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { currentJobAction, allJobAction } from "../../slice/JobListSlice";
 import { http } from "../../helper/http";
-
+import alertify from "alertifyjs";
 export default function JobEditModal() {
   const cities = useSelector((state) => state.genericValue.cities);
   const categories = useSelector((state) => state.genericValue.categories);
   const currentJob = useSelector((state) => state.jobList.currentJob);
   const jobList = useSelector((state) => state.jobList.job);
+  let formData = {};
 
-  const { handleSubmit, register, reset } = useForm();
   const dispatch = useDispatch();
 
   const genders = [
@@ -28,32 +26,42 @@ export default function JobEditModal() {
     },
   ];
 
-  const onSubmit = (data) => {
-	let resp;
+  const onChange = (e) => {
+    if (e.target.id === "tip") formData.tip = e.target.checked;
+    else formData[e.target.id] = e.target.value;
+  };
 
-	for (const [key, value] of Object.entries(currentJob)){
-		if(!data[key]){
-			data[key] = value
-		}
-	}
-	resp = jobList.map(obj => data.id === obj.id ? data : obj)
-	console.log(resp)
-    // // http.put("/hire/job/update/" + currentJob.id, data).then((data) => console.log(data));
-	dispatch(currentJobAction(data))
-    dispatch(allJobAction(resp));
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    alertify.set("notifier", "position", "top-center");
+
+    let resp;
+
+    for (const [key, value] of Object.entries(currentJob)) {
+      if (!formData[key]) {
+        formData[key] = value;
+      }
+    }
+    resp = jobList.map((obj) => (formData.id === obj.id ? formData : obj));
+    http.put("/hire/job/update/" + currentJob.id, formData).then(() => {
+      dispatch(currentJobAction(formData));
+      dispatch(allJobAction(resp));
+      alertify.success("İşlem başarılı bir şekilde gerçekleşti.");
+    }).catch(() => alertify.error("İşlem başarısız. Lütfen tekrar deneyiniz."));
+
     window.location.href = "#";
-    reset(data);
   };
   return (
-	  <div>
-		{(console.log("render oldu", currentJob))}
+    <div>
+      {console.log("render oldu", currentJob.id)}
       <div className="modal" id="jobEditModal">
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={onSubmit}
           className="modal-box w-12/12 flex flex-col items-center"
         >
           <h3 className="font-bold text-lg text-center mb-5 border-b-4 w-full">
-            İş Düzenle {currentJob.price}
+            İş Düzenle
           </h3>
           <div className="grid lg:grid-cols-2 w-full gap-4 ">
             <div className="form-control w-full ">
@@ -63,7 +71,9 @@ export default function JobEditModal() {
               <select
                 className="select select-bordered w-full "
                 defaultValue={currentJob.category.id}
-                {...register("jobCategoryId")}
+                id="category"
+                key={currentJob.id}
+                onChange={(e) => onChange(e)}
               >
                 {categories &&
                   categories.map((category) => (
@@ -79,11 +89,13 @@ export default function JobEditModal() {
               </label>
               <label className="input-group">
                 <input
-                  {...register("price")}
+                  key={currentJob.id}
                   type="number"
+                  id="price"
                   placeholder="Ücret giriniz..."
                   className="input input-bordered w-full"
                   defaultValue={currentJob.price}
+                  onChange={(e) => onChange(e)}
                 />
                 <span>TRY</span>
               </label>
@@ -94,8 +106,10 @@ export default function JobEditModal() {
               </label>
               <select
                 className="select select-bordered w-full "
-                {...register("cityId")}
                 defaultValue={currentJob.city.id}
+                key={currentJob.id}
+                id="city"
+                onChange={(e) => onChange(e)}
               >
                 {cities &&
                   cities.map((city) => (
@@ -111,8 +125,10 @@ export default function JobEditModal() {
               </label>
               <select
                 defaultValue={currentJob.gender}
-                className="select select-bordered w-full "
-                {...register("gender")}
+                className="select select-bordered w-full"
+                key={currentJob.id}
+                id="gender"
+                onChange={(e) => onChange(e)}
               >
                 <option disabled>Seçiniz</option>
                 {genders.map((gender) => (
@@ -127,11 +143,13 @@ export default function JobEditModal() {
                 <span className="label-text">Başlangıç Tarihi</span>
               </label>
               <input
-                {...register("startDate")}
                 type="datetime-local"
                 placeholder="Type here"
                 className="input input-bordered w-full"
                 defaultValue={currentJob.startDate.toString().slice(0, 16)}
+                key={currentJob.id}
+                id="startDate"
+                onChange={(e) => onChange(e)}
               />
             </div>
             <div className="form-control w-full ">
@@ -139,11 +157,13 @@ export default function JobEditModal() {
                 <span className="label-text">Bitiş Tarihi</span>
               </label>
               <input
-                {...register("endDate")}
                 type="datetime-local"
                 defaultValue={currentJob.endDate.toString().slice(0, 16)}
                 placeholder="Type here"
-                className="input input-bordered w-full "
+                className="input input-bordered w-full"
+                key={currentJob.id}
+                id="endDate"
+                onChange={(e) => onChange(e)}
               />
             </div>
           </div>
@@ -153,11 +173,13 @@ export default function JobEditModal() {
                 <span className="label-text">Çalışan Sayısı</span>
               </label>
               <input
-                {...register("workerCount")}
+                key={currentJob.id}
                 type="number"
                 placeholder="Çalışan sayısı giriniz..."
                 className="input input-bordered w-full"
                 defaultValue={currentJob.workerCount}
+                id="workerCount"
+                onChange={(e) => onChange(e)}
               />
             </div>
             <div className="form-control w-full">
@@ -165,10 +187,12 @@ export default function JobEditModal() {
                 <span className="label-text">Açıklama</span>
               </label>
               <textarea
-                {...register("description")}
                 className="textarea textarea-bordered"
                 placeholder="Açıklama"
                 defaultValue={currentJob.description}
+                key={currentJob.id}
+                id="description"
+                onChange={(e) => onChange(e)}
               />
             </div>
             <div className="form-control w-full">
@@ -178,18 +202,23 @@ export default function JobEditModal() {
               <textarea
                 className="textarea textarea-bordered"
                 defaultValue={currentJob.address}
-                {...register("address")}
                 placeholder="Adres"
+                key={currentJob.id}
+                id="address"
+                onChange={(e) => onChange(e)}
               />
             </div>
             <div className="form-control mt-3 w-full ">
               <label className="label cursor-pointer">
                 <span className="label-text">Bahşiş Seçeneği</span>
                 <input
-                  {...register("tip")}
                   type="checkbox"
                   className="checkbox"
                   defaultChecked={currentJob.tip}
+                  defaultValue={currentJob.tip}
+                  key={currentJob.id}
+                  id="tip"
+                  onChange={(e) => onChange(e)}
                 />
               </label>
             </div>

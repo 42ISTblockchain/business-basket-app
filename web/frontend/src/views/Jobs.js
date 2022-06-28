@@ -13,12 +13,26 @@ import {
 
 export default function Jobs() {
   const jobList = useSelector((state) => state.jobList.job);
-  const currentJob = useSelector((state) => state.jobList.currentJob)
+  const currentJob = useSelector((state) => state.jobList.currentJob);
   const dispatch = useDispatch();
 
+  const genders = [
+    {
+      key: "male",
+      value: "Erkek",
+    },
+    {
+      key: "female",
+      value: "Kadın",
+    },
+    {
+      key: "both",
+      value: "Her ikiside",
+    },
+  ];
+
   useEffect(() => {
-    http
-	  .get("/hire/job").then((res) => dispatch(allJobAction(res.data)));
+    http.get("/hire/job").then((res) => dispatch(allJobAction(res.data)));
     http
       .get("/generic/city")
       .then((res) => dispatch(loadGenericCities(res.data)));
@@ -29,7 +43,7 @@ export default function Jobs() {
 
   return (
     <>
-      <InfoModal/>
+      <InfoModal />
       <JobCreateModal />
       {currentJob && <JobEditModal />}
       <DeleteModal path="/hire/job/delete/" />
@@ -59,12 +73,12 @@ export default function Jobs() {
                 return (
                   <tr className="hover" key={job.id}>
                     <th>{job.category.name}</th>
-                    <td>{job.startDate}</td>
-                    <td>{job.endDate}</td>
+                    <td>{new Date(job.startDate).toLocaleDateString()} <br /> {new Date(job.startDate).toLocaleTimeString()}</td>
+                    <td>{new Date(job.endDate).toLocaleDateString()} <br /> {new Date(job.endDate).toLocaleTimeString()}</td>
                     <td>{job.price}</td>
                     <td>{job.workerCount}</td>
                     <td>{job.city.name}</td>
-                    <td>{job.gender}</td>
+                    <td>{genders.find((gnd) => gnd.key === job.gender).value}</td>
                     <td>
                       <a
                         href="#infoModal"
