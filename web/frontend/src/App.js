@@ -4,18 +4,18 @@ import {routes} from "./routes";
 import {ProtectedRoute, UnprotectedRoute} from "./helper/route-check";
 import Layout from "./components/Layout";
 
+
 function App() {
     return (
         <>
             <Routes>
-
                 <Route path="/" element={<ProtectedRoute />}>
                     <Route path="/" element={<Navigate to="/hire" />} />
-                    {routes.map((route) => (
+                    {routes.map((route, index) => (
                             <Route
-                                key={route.id}
+                                key={index}
                                 path={route.path}
-                                exact={route.exact}
+                                exact={true}
                                 element={<Layout component={route.component} />}
                             />
                         ))}
