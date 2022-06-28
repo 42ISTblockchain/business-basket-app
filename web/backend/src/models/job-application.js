@@ -12,6 +12,10 @@ const JobApplication = sequelize.define('JobApplication', {
 		type: Sequelize.INTEGER,
 		allowNull: false
 	},
+	hireId: {
+		type: Sequelize.INTEGER,
+		allowNull: false,
+	},
 	status: {
 		type: Sequelize.BOOLEAN,
 	},
@@ -20,6 +24,13 @@ const JobApplication = sequelize.define('JobApplication', {
 		type: Sequelize.DATE,
 	}
 });
+
+JobApplication.associate = function (models) {
+	JobApplication.hasOne(models.Hire, {as: 'hire', foreignKey: "id", sourceKey: 'hireId'});
+	JobApplication.hasOne(models.Job, {as: 'job', foreignKey: "id", sourceKey: 'jobId'});
+	JobApplication.hasOne(models.Worker, {as: 'worker', foreignKey: "id", sourceKey: 'workerId'});
+};
+
 
 module.exports = {
 	JobApplication
