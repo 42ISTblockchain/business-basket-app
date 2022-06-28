@@ -70,13 +70,13 @@ export default function JobApplication() {
                             <td><Badge status={job.status}>{job.status}</Badge></td>
                             <td>{job.worker.phoneNumber}</td>
                             <td>
-                                <a href="frontend/src/views/hire/JobApplicationPending#" className="mx-2 tooltip" data-tip="Onayla"
+                                <button className="mx-2 tooltip" data-tip="Onayla"
                                    onClick={() => acceptJobApplication(job.id)}><span
-                                    className="material-symbols-rounded">check_circle</span></a>
-                                <a href="frontend/src/views/hire/JobApplicationPending#" className="mx-2 tooltip" data-tip="Reddet"
+                                    className="material-symbols-rounded">check_circle</span></button>
+                                <button className="mx-2 tooltip" data-tip="Reddet"
                                    onClick={() => deleteJobApplication(job.id)}><span
-                                    className="material-symbols-rounded">cancel</span></a>
-                                <a href="frontend/src/views/hire/JobApplicationPending#infoModal"
+                                    className="material-symbols-rounded">cancel</span></button>
+                                <a href="#infoModal"
                                    onClick={() =>
                                        setDescription({
                                            title: "İş Detayı",
