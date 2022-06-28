@@ -11,27 +11,27 @@ export const routes = [
         exact: true,
         children: [
             {
-                path: '/hire',
+                path: '',
                 exact: true,
                 component: Home,
             },
             {
-                path: '/hire/job',
+                path: 'job',
                 exact: true,
                 component: Jobs,
             },
             {
-                path: '/hire/applications/accepted',
+                path: 'applications/accepted',
                 exact: true,
                 component: JobApplicationAccepted,
             },
             {
-                path: '/hire/applications/pending',
+                path: 'applications/pending',
                 exact: true,
                 component: JobApplicationPending,
             },
             {
-                path: '/hire/applications/rejected',
+                path: 'applications/rejected',
                 exact: true,
                 component: JobApplicationRejected,
             },
