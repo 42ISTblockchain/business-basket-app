@@ -1,25 +1,41 @@
 export const menus = {
-    "hire" : [
+    "hire": [
         {
-            id: 1,
             name: 'Anasayfa',
             path: '/hire/',
             icon: 'dashboard',
             component: 'Dashboard'
         },
         {
-            id: 2,
             name: 'İş Listem',
             path: '/hire/job',
             icon: 'work',
             component: 'Job'
         },
         {
-            id: 3,
             name: 'Başvurular',
-            path: '/hire/applications',
             icon: 'groups',
-            component: 'Application'
+            path: '/hire/applications/',
+            children: [
+                {
+                    name: 'Kabul Edilen',
+                    path: '/hire/applications/accepted',
+                    icon: 'check',
+                    component: 'JobApplicationAccepted'
+                },
+                {
+                    name: 'Bekleyen',
+                    path: '/hire/applications/pending',
+                    icon: 'pending_actions',
+                    component: 'JobApplicationPending'
+                },
+                {
+                    name: 'Reddedilen',
+                    path: '/hire/applications/rejected',
+                    icon: 'close',
+                    component: 'JobApplicationRejected'
+                }
+            ]
         },
     ]
 }
