@@ -64,11 +64,11 @@ export default function JobApplication() {
                             <td>
                                 {new Date(job.job.startDate).toLocaleString() > new Date().toLocaleString() &&
 
-                                    <a href="frontend/src/views/hire/JobApplicationRejected#" className="mx-2 tooltip" data-tip="Onayla"
+                                    <button className="mx-2 tooltip" data-tip="Onayla"
                                        onClick={() => acceptJobApplication(job.id)}><span
-                                        className="material-symbols-rounded">check_circle</span></a>
+                                        className="material-symbols-rounded">check_circle</span></button>
                                 }
-                                <a href="frontend/src/views/hire/JobApplicationRejected#infoModal"
+                                <a href="#infoModal"
                                    onClick={() =>
                                        setDescription({
                                            title: "İş Detayı",

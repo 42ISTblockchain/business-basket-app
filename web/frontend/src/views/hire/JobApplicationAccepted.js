@@ -54,7 +54,7 @@ export default function JobApplicationAccepted() {
                             <td><Badge status={job.status}>{job.status}</Badge></td>
                             <td>{job.worker.phoneNumber}</td>
                             <td>
-                                <a href="frontend/src/views/hire/JobApplicationAccepted#infoModal"
+                                <a href="#infoModal"
                                    onClick={() =>
                                        setDescription({
                                            title: "İş Detayı",
