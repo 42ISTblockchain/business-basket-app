@@ -13,10 +13,11 @@ class JobController {
     listJob = errorWrapper(async (req, res) => {
         const jobs = await jobService.list({
                 where: {hireId: getUserId(req.headers)},
+				attributes: { exclude: ["cityId", "hireId", "jobCategoryId"] },
                 order: [['id', 'DESC']],
                 include: [
-                    {model: JobCategory, attributes:['name'], as: 'category'},
-                    {model: City, attributes:['name'], as: 'city'}
+                    {model: JobCategory, attributes:['name', 'id'], as: 'category'},
+                    {model: City, attributes:['name', 'id'], as: 'city'}
                 ]
             })
         res.status(HttpStatus.OK).json(jobs)

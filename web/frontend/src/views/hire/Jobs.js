@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import { http } from "../helper/http";
+import { http } from "../../helper/http";
 import { useSelector, useDispatch } from "react-redux";
-import { allJobAction, currentJobAction } from "../slice/JobListSlice";
-import InfoModal from "../components/modals/InfoModal";
-import JobCreateModal from "../components/modals/JobCreateModal";
-import JobEditModal from "../components/modals/JobEditModal";
-import DeleteModal from "../components/modals/DeleteModal";
+import { allJobAction, currentJobAction } from "../../slice/JobListSlice";
+import InfoModal from "../../components/modals/InfoModal";
+import JobCreateModal from "../../components/modals/JobCreateModal";
+import JobEditModal from "../../components/modals/JobEditModal";
+import DeleteModal from "../../components/modals/DeleteModal";
 import {
   loadGenericCategories,
   loadGenericCities,
-} from "../slice/genericSlice";
+} from "../../slice/genericSlice";
 
 export default function Jobs() {
   const jobList = useSelector((state) => state.jobList.job);
