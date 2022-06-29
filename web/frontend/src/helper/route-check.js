@@ -1,6 +1,6 @@
 import {Navigate, Outlet} from "react-router-dom";
 
-const loginPath = '/login'
+const loginPath = '/auth/login'
 
 export const UnprotectedRoute = () => {
     const auth = JSON.parse(localStorage.getItem('auth'));
