@@ -1,10 +1,11 @@
-import Home from "../views/hire/Home";
+import HireHome from "../views/hire/Home";
 import Jobs from "../views/hire/Jobs";
 import JobApplicationAccepted from "../views/hire/JobApplicationAccepted";
 import JobApplicationPending from "../views/hire/JobApplicationPending";
 import JobApplicationRejected from '../views/hire/JobApplicationRejected';
 import WorkerProfile from "../views/hire/WorkerProfile";
 import Profile from "../views/hire/Profile";
+import WorkerHome from "../views/worker/Home";
 
 export const routes = [
     {
@@ -14,7 +15,7 @@ export const routes = [
             {
                 path: '',
                 exact: true,
-                component: Home,
+                component: HireHome,
             },
             {
                 path: 'job',
@@ -46,6 +47,17 @@ export const routes = [
                 exact: true,
                 component: Profile,
             }
-        ]
+        ],
     },
+    {
+        path: '/worker',
+        exact: true,
+        children: [
+            {
+                path: '',
+                exact: true,
+                component: WorkerHome,
+            },
+        ],
+    }
 ]
