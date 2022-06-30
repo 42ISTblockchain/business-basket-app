@@ -1,9 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { menus } from "../configs/menus";
+import { hire,worker } from "../configs/menus";
 
 export default function Sidebar({component: Component}) {
+    const auth =  JSON.parse(localStorage.getItem("auth"));
+    let menus;
 
+    if (auth.role === "hire") {
+       menus = hire
+    }else if (auth.role === "worker") {
+        menus = worker
+    }
     return (
         <div className="drawer drawer-mobile h-[calc(100vh-64px)]">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
@@ -13,7 +20,7 @@ export default function Sidebar({component: Component}) {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content z-10">
-                    {menus.hire.map((menu,index) => {
+                    {menus.map((menu,index) => {
                         return (
                             <div key={index}>
                                 <li className="mb-2 bg-white dark:bg-[#242930] rounded-lg">

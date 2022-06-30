@@ -1,4 +1,4 @@
-export const menus = {
+const menus = {
     "hire": [
         {
             name: 'Anasayfa',
@@ -37,5 +37,18 @@ export const menus = {
                 }
             ]
         },
+    ],
+    "worker": [
+        {
+            name: 'Anasayfa',
+            path: '/worker/',
+            icon: 'dashboard',
+            component: 'Home'
+        },
     ]
 }
+
+const hire = menus.hire;
+const worker = menus.worker;
+
+module.exports = {hire, worker}

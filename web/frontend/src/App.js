@@ -1,9 +1,11 @@
-import Login from "./views/hire/auth/Login";
+import HireLogin from "./views/hire/auth/Login";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {routes} from "./routes";
 import {ProtectedRoute, UnprotectedRoute} from "./helper/route-check";
 import Layout from "./components/Layout";
-import Register from "./views/hire/auth/Register";
+import HireRegister from "./views/hire/auth/Register";
+import WorkerLogin from "./views/worker/auth/Login";
+//import WorkerRegister from "./views/worker/auth/register";
 
 
 function App() {
@@ -28,14 +30,19 @@ function App() {
 
                 <Route path="/auth" element={<UnprotectedRoute/>}>
                     <Route
-                        path="login"
+                        path="hire/login"
                         exact
-                        element={<Login/>}
+                        element={<HireLogin/>}
                     />
                     <Route
-                        path="register"
+                        path="hire/register"
                         exact
-                        element={<Register/>}/>
+                        element={<HireRegister/>}/>
+                    <Route
+                        path="worker/login"
+                        exact
+                        element={<WorkerLogin/>}
+                    />
                 </Route>
             </Routes>
         </>
