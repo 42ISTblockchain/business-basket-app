@@ -4,6 +4,7 @@ import JobApplicationAccepted from "../views/hire/JobApplicationAccepted";
 import JobApplicationPending from "../views/hire/JobApplicationPending";
 import JobApplicationRejected from '../views/hire/JobApplicationRejected';
 import WorkerProfile from "../views/hire/WorkerProfile";
+import Profile from "../views/hire/Profile";
 
 export const routes = [
     {
@@ -36,9 +37,14 @@ export const routes = [
                 component: JobApplicationRejected,
             },
             {
-                path: '/hire/worker/profile',
+                path: 'worker/profile',
                 exact: true,
                 component: WorkerProfile,
+            },
+            {
+                path: 'profile',
+                exact: true,
+                component: Profile,
             }
         ]
     },
