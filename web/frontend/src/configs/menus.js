@@ -45,6 +45,12 @@ const menus = {
             icon: 'dashboard',
             component: 'Home'
         },
+        {
+            name: 'İş Bul',
+            path: '/worker/find-job',
+            icon: 'search',
+            component: 'FindJob'
+        }
     ]
 }
 
