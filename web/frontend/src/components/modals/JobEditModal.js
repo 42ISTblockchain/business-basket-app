@@ -52,6 +52,7 @@ export default function JobEditModal() {
 
     window.location.href = "#";
   };
+
   return (
     <div>
       {console.log("render oldu", currentJob.id)}

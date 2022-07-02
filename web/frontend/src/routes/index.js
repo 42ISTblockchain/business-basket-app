@@ -6,6 +6,7 @@ import JobApplicationRejected from '../views/hire/JobApplicationRejected';
 import WorkerProfile from "../views/hire/WorkerProfile";
 import Profile from "../views/hire/Profile";
 import WorkerHome from "../views/worker/Home";
+import FindJob from "../views/worker/FindJob";
 
 export const routes = [
     {
@@ -58,6 +59,11 @@ export const routes = [
                 exact: true,
                 component: WorkerHome,
             },
+            {
+                path: 'find-job',
+                exact: true,
+                component: FindJob,
+            }
         ],
     }
 ]
