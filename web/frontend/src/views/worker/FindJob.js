@@ -4,6 +4,7 @@ import {http} from "../../helper/http";
 import {allJobAction, currentJobAction} from "../../slice/JobListSlice";
 import {loadGenericCategories, loadGenericCities} from "../../slice/genericSlice";
 import {useDispatch, useSelector} from "react-redux";
+import alertify from "alertifyjs";
 
 export default function FindJob() {
     const [query, setQuery] = useState({});
@@ -22,22 +23,17 @@ export default function FindJob() {
                 workerId: workerId,
                 hireId: hireId,
             }).then((res) => {
-                console.log(res)
+                alertify.success("Başvurunuz alındı.");
             })
         }
     }
 
     useEffect(() => {
-        console.log(query)
-        http.get("/hire/job", {params: query}).then((res) => dispatch(allJobAction(res.data)));
-        http
-            .get("/generic/city")
+        http.get("/generic/city")
             .then((res) => dispatch(loadGenericCities(res.data)));
-        http
-            .get("/generic/category")
+        http.get("/generic/category")
             .then((res) => dispatch(loadGenericCategories(res.data)));
-        http
-            .get("/worker/job-application/")
+        http.get("/worker/job-application/", {params: query})
             .then((res) => setJob(res.data));
     }, [query]);
 
