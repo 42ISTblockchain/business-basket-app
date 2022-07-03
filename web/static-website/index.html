@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <title>Responsive real state website - Bedimcode</title>
@@ -58,7 +59,7 @@
         <!-- Theme change button -->
         <i class="bx bx-moon change-theme" id="theme-button"></i>
 
-        <a href="#" class="button nav__button">
+        <a href="#" class="button nav__button" id="open-modal">
             Kayıt Ol
         </a>
     </nav>
@@ -145,7 +146,8 @@
             <div class="popular__container swiper">
                 <div class="swiper-wrapper">
                     <article class="popular__card swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80" alt="" class="popular__img">
+                        <img src="https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
+                             alt="" class="popular__img">
                         <div class="popular__data">
                             <h3 class="popular__title">
                                 Barista
@@ -156,10 +158,11 @@
                         </div>
                     </article>
                     <article class="popular__card swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1557952138-db779780cd54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="popular__img">
+                        <img src="https://images.unsplash.com/photo-1557952138-db779780cd54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                             alt="" class="popular__img">
                         <div class="popular__data">
                             <h3 class="popular__title">
-                               Garson
+                                Garson
                             </h3>
                             <p class="popular__description">
                                 Boş günlerinde çok iyi bir garson var.
@@ -167,7 +170,8 @@
                         </div>
                     </article>
                     <article class="popular__card swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="popular__img">
+                        <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                             alt="" class="popular__img">
                         <div class="popular__data">
                             <h3 class="popular__title">
                                 Komi
@@ -187,7 +191,6 @@
             </div>
         </div>
     </section>
-
 
     <!--==================== Students ====================-->
 
@@ -511,6 +514,26 @@
     </div>
 </footer>
 
+<div class="modal__container" id="modal-container">
+    <div class="modal__content">
+        <div class="modal__close close-modal" title="Close">
+            <i class='bx bx-x'></i>
+        </div>
+
+        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+        <h1 class="modal__title">Good Job!</h1>
+        <p class="modal__description">Click the button to close</p>
+
+        <a href="http://localhost:3000/auth/worker/login" target="_blank" class="modal__button modal__button-width" style="margin-bottom: 10px;">
+            Çalışmaya Başla
+        </a>
+
+        <a href="http://localhost:3000/auth/hire/register" target="_blank" class="modal__button modal__button-width">
+            İşe Almaya Başla
+        </a>
+    </div>
+</div>
 
 <!--========== SCROLL UP ==========-->
 <a href="#" class="scrollup" id="scroll-up">
@@ -525,5 +548,6 @@
 
 <!--=============== MAIN JS ===============-->
 <script src="assets/js/main.js"></script>
+<script src="assets/js/modal.js"></script>
 </body>
 </html>
