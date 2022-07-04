@@ -142,6 +142,7 @@ body.dark-theme {
 }
 
 .dark-theme .value__orbe,
+.dark-theme .student__orbe,
 .dark-theme .value__accordion-icon,
 .dark-theme .value__accordion-arrow,
 .dark-theme .contact__orbe,
@@ -455,6 +456,8 @@ body.dark-theme {
 .popular__img {
     border-radius: 1rem;
     margin-bottom: 1rem;
+    height: 15rem !important;
+    width: 33rem !important;
 }
 
 .popular__data {
@@ -523,16 +526,16 @@ body.dark-theme {
 }
 
 .value__orbe {
-    width: 266px;
-    height: 316px;
-    background-color: hsla(228, 24%, 97%);
-    border-radius: 135px 135px 16px 16px;
+    width: 306px;
+    height: 346px;
+    background-color: hsla(42, 37%, 88%, 0.5);
+    border-radius: 258px 258px 16px 16px;
 }
 
 .value__img {
     position: absolute;
-    width: 250px;
-    height: 300px;
+    width: 300px;
+    height: 350px;
     overflow: hidden;
     border-radius: 125px 125px 12px 12px;
     inset: 0;
@@ -598,6 +601,98 @@ body.dark-theme {
 }
 
 .value__accordion-content {
+    overflow: hidden;
+    height: 0;
+    transition: all .25s ease;
+}
+
+/*=============== Student ===============*/
+.student__container {
+    row-gap: 3rem;
+}
+
+.student__images {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.student__orbe {
+    width: 336px;
+    height: 376px;
+    background-color: hsla(42, 37%, 88%, 0.5);
+    border-radius: 1958px 1608px 116px 178px;
+}
+
+.student__img {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 125px 125px 12px 12px;
+    inset: 0;
+    margin: auto;
+    box-shadow: 0 16px 32px hsla(228, 66%, 25%, .25);
+}
+
+.student__description {
+    font-size: var(--small-font-size);
+    margin-bottom: 2rem;
+}
+
+.student__accordion {
+    display: grid;
+    row-gap: 1.5rem;
+}
+
+.student__accordion-item {
+    background-color: var(--body-color);
+    border: 2px solid var(--border-color);
+    border-radius: .5rem;
+    padding: 1rem .75rem;
+}
+
+.student__accordion-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.student__accordion-icon {
+    background-color: var(--first-color-lighten);
+    padding: 5px;
+    border-radius: .25rem;
+    font-size: 18px;
+    color: var(--first-color);
+    margin-right: .75rem;
+    transition: .3s;
+}
+
+.student__accordion-title {
+    font-size: var(--small-font-size);
+}
+
+.student__accordion-arrow {
+    display: flex;
+    background-color: var(--first-color-lighten);
+    padding: .25rem;
+    color: var(--first-color);
+    border-radius: 2px;
+    font-size: 10px;
+    margin-left: auto;
+    transition: .3s;
+}
+
+.student__accordion-arrow i {
+    transition: .4s;
+}
+
+.student__accordion-description {
+    font-size: var(--smaller-font-size);
+    padding: 1.25rem 2.5rem 0 2.75rem;
+}
+
+.student__accordion-content {
     overflow: hidden;
     height: 0;
     transition: all .25s ease;
@@ -941,6 +1036,11 @@ body.dark-theme {
         height: 280px;
     }
 
+    .student__orbe {
+        width: 366px;
+        height: 310px;
+    }
+
     .subscribe__container {
         padding: 2rem 1rem;
     }
@@ -991,6 +1091,7 @@ body.dark-theme {
     }
 
     .value__container,
+    .student__container,
     .contact__container {
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
@@ -1131,6 +1232,7 @@ body.dark-theme {
     }
 
     .value__container,
+    .student__container,
     .contact__container {
         align-items: flex-start;
         column-gap: 5rem;
@@ -1143,6 +1245,12 @@ body.dark-theme {
         border-radius: 258px 258px 16px 16px;
     }
 
+    .student__orbe {
+        width: 601px;
+        height: 741px;
+        border-radius: 1958px 800px 158px 40px;
+    }
+
     .value__img,
     .contact__img {
         width: 461px;
@@ -1150,7 +1258,12 @@ body.dark-theme {
         border-radius: 238px 238px 12px 12px;
     }
 
-    .value__imh img,
+    .student__img {
+        width: 461px;
+        height: 601px;
+        border-radius: 1958px 800px 12px 12px;
+    }
+
     .contact__img img {
         max-width: initial;
     }
