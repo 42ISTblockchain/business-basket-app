@@ -17,6 +17,7 @@ app.use('/api', APIRoutes)
 app.use(errorHandler)
 
 
+
 app.listen(process.env.APP_PORT, () => {
     console.log("Sunucu ayağa kalktı...")
 })
