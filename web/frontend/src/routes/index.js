@@ -1,69 +1,112 @@
-import HireHome from "../views/hire/Home";
-import Jobs from "../views/hire/Jobs";
-import JobApplicationAccepted from "../views/hire/JobApplicationAccepted";
-import JobApplicationPending from "../views/hire/JobApplicationPending";
-import JobApplicationRejected from '../views/hire/JobApplicationRejected';
+import Jobs from "../views/hire/job/Jobs";
+import JobApplicationAccepted from "../views/hire/job/applications/JobApplicationAccepted";
+import JobApplicationPending from "../views/hire/job/applications/JobApplicationPending";
+import JobApplicationRejected from '../views/hire/job/applications/JobApplicationRejected';
 import WorkerProfile from "../views/hire/WorkerProfile";
 import Profile from "../views/hire/Profile";
 import WorkerHome from "../views/worker/Home";
 import FindJob from "../views/worker/FindJob";
+import Home from "../views/hire/Home";
+import Layout from "../components/Layout";
+import { ProtectedRoute } from "../helper/route-check";
+import { Navigate } from "react-router-dom";
+import Applications from "../views/hire/job/applications";
 
-export const routes = [
+const routes = [
     {
-        path: '/hire',
+        path: 'hire',
         exact: true,
+		auth: true,
+		element: <Layout/>,
         children: [
+			{
+				index: true,
+				exact: true,
+				element: <Home />
+			},
             {
-                path: '',
-                exact: true,
-                component: HireHome,
-            },
-            {
-                path: 'job',
-                exact: true,
-                component: Jobs,
-            },
-            {
-                path: 'applications/accepted',
-                exact: true,
-                component: JobApplicationAccepted,
-            },
-            {
-                path: 'applications/pending',
-                exact: true,
-                component: JobApplicationPending,
-            },
-            {
-                path: 'applications/rejected',
-                exact: true,
-                component: JobApplicationRejected,
-            },
+				path: "job",
+				exact: true,
+				children: [
+					{
+						index: true,
+						exact: true,
+						element: <Jobs />
+					},
+					{
+						path: "applications",
+						exact: true,
+						element: <Applications />,
+						children: [
+							{
+								index: true,
+								exact: true,
+								element: <JobApplicationAccepted />
+							},
+							{
+								path: 'accepted',
+								exact: true,
+								element: <JobApplicationAccepted/>
+							},
+							{
+								path: 'pending',
+								exact: true,
+								element: <JobApplicationPending/>
+							},
+							{
+								path: 'rejected',
+								exact: true,
+								element: <JobApplicationRejected/>
+							},
+						]
+					},			
+				]
+			},
             {
                 path: 'worker/profile',
                 exact: true,
-                component: WorkerProfile,
+                element: <WorkerProfile/>,
             },
             {
                 path: 'profile',
                 exact: true,
-                component: Profile,
+                element: <Profile/>,
             }
         ],
     },
     {
-        path: '/worker',
+        path: 'worker',
         exact: true,
         children: [
             {
                 path: '',
                 exact: true,
-                component: WorkerHome,
+                element: <WorkerHome/>,
             },
             {
                 path: 'find-job',
                 exact: true,
-                component: FindJob,
+                element: <FindJob/>,
             }
         ],
     }
 ]
+
+let elements = []
+
+const auth = routes => routes.map((route) => {
+	if (route.children) {
+		route.children = auth(route.children)
+	}
+	if (route.element)
+		elements.push({path:route.path, element: route.element})
+	// if (route.auth)
+	// 	route.element = <ProtectedRoute>route.element</ProtectedRoute>
+	return route
+})
+
+// setInterval(()=>{
+// 	console.log(elements)
+// }, 10000)
+
+export default routes

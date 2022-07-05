@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import InfoModal from "../../components/modals/InfoModal";
-import {http} from "../../helper/http";
+import InfoModal from "../../../../components/modals/InfoModal";
+import {http} from "../../../../helper/http";
 import {useSelector, useDispatch} from "react-redux";
-import {loadData} from "../../slice/JobApplicationListSlice";
+import {loadData} from "../../../../slice/JobApplicationListSlice";
 
 export default function JobApplicationAccepted() {
     const [description, setDescription] = useState();
