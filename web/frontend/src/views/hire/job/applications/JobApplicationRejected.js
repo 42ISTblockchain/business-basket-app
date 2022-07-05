@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import InfoModal from "../../components/modals/InfoModal";
-import {http} from "../../helper/http";
+import InfoModal from "../../../../components/modals/InfoModal";
+import {http} from "../../../../helper/http";
 import {useSelector, useDispatch} from "react-redux";
-import {loadData} from "../../slice/JobApplicationListSlice";
+import {loadData} from "../../../../slice/JobApplicationListSlice";
 
 export default function JobApplication() {
     const [description, setDescription] = useState();
@@ -15,14 +15,6 @@ export default function JobApplication() {
 
     function acceptJobApplication(id) {
         http.put(`/hire/job-application/update/${id}`, {status: 'accepted'}).then((res) => {
-            console.log(res)
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-
-    function deleteJobApplication(id) {
-        http.put(`/hire/job-application/update/${id}`, {status: 'rejected'}).then((res) => {
             console.log(res)
         }).catch((err) => {
             console.log(err)
@@ -62,7 +54,7 @@ export default function JobApplication() {
                 </tr>
                 </thead>
                 <tbody>
-                {jobApplications && jobApplications.filter(job => job.status === "pending").map(job => {
+                {jobApplications && jobApplications.filter(job => job.status === "rejected").map(job => {
                     return (
                         <tr key={job.id}>
                             <td>{job.worker.firstName + ' ' + job.worker.lastName}</td>
@@ -70,12 +62,12 @@ export default function JobApplication() {
                             <td><Badge status={job.status}>{job.status}</Badge></td>
                             <td>{job.worker.phoneNumber}</td>
                             <td>
-                                <button className="mx-2 tooltip" data-tip="Onayla"
-                                   onClick={() => acceptJobApplication(job.id)}><span
-                                    className="material-symbols-rounded">check_circle</span></button>
-                                <button className="mx-2 tooltip" data-tip="Reddet"
-                                   onClick={() => deleteJobApplication(job.id)}><span
-                                    className="material-symbols-rounded">cancel</span></button>
+                                {new Date(job.job.startDate).toLocaleString() > new Date().toLocaleString() &&
+
+                                    <button className="mx-2 tooltip" data-tip="Onayla"
+                                       onClick={() => acceptJobApplication(job.id)}><span
+                                        className="material-symbols-rounded">check_circle</span></button>
+                                }
                                 <a href="#infoModal"
                                    onClick={() =>
                                        setDescription({

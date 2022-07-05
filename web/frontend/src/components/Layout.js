@@ -1,12 +1,13 @@
-import React from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
 
-export default function Layout({component: Component}) {
+export default function Layout() {
+
     return (
         <>
             <Navbar />
-            <Sidebar component={Component}/>
+            <Sidebar component={Outlet}/>
         </>
     );
 }

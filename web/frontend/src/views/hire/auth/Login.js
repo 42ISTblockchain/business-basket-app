@@ -19,7 +19,6 @@ export default function Login() {
         }).then((res) => {
             dispatch(loginData(res.data))
             localStorage.setItem('auth', JSON.stringify(res.data))
-            console.log(res)
             navigate("/hire", {replace: true})
         }).catch(err => setError(err.response.data.message))
     }
