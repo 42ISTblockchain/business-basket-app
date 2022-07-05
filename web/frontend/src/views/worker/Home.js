@@ -33,7 +33,7 @@ export default function Home() {
                     <tbody>
                     {jobs && jobs.map(job => (
                         <tr className="hover" key={job.id}>
-                            <td>{job.hire.companyName}x</td>
+                            <td>{job.hire.companyName}</td>
                             <td>{badge(job.status)}</td>
                         </tr>
                     ))}

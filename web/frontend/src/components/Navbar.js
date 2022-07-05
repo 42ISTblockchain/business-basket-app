@@ -1,11 +1,16 @@
 import React from "react";
+import {NavLink, useNavigate} from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate()
 
   function logout() {
     localStorage.removeItem('auth');
+    navigate("/")
     window.location.reload();
   }
+
+  const role = JSON.parse(localStorage.getItem('auth')).role
 
   return (
     <div className="navbar bg-primary text-primary-content flex-shrink-0">
@@ -48,9 +53,9 @@ export default function Navbar() {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="/hire/profile" className="justify-between">
+              <NavLink to={'/' + role + '/profile'} className="justify-between">
                 Profil
-              </a>
+              </NavLink>
             </li>
             <li>
               <a onClick={() => logout()}>Çıkış yap</a>

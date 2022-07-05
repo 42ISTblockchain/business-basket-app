@@ -12,6 +12,10 @@ import { ProtectedRoute } from "../helper/route-check";
 import { Navigate } from "react-router-dom";
 import Applications from "../views/hire/job/applications";
 import WorkerProfile from "../views/worker/Profile";
+import WorkerLogin from "../views/worker/auth/Login";
+import HireLogin from "../views/hire/auth/Login";
+import HireRegister from "../views/hire/auth/Register";
+import Experience from "../views/worker/Experience";
 
 const routes = [
     {
@@ -94,9 +98,41 @@ const routes = [
 				path: 'profile',
 				exact: true,
 				element: <WorkerProfile/>,
+			},
+			{
+				path: 'experience',
+				exact: true,
+				element: <Experience />,
 			}
         ],
-    }
+    },
+	{
+		path: 'auth',
+		exact: true,
+		children: [
+			{
+				path: 'worker/login',
+				exact: true,
+				element: <WorkerLogin/>,
+			},
+			{
+				path: 'hire',
+				exact: true,
+				children: [
+					{
+						path: 'login',
+						exact: true,
+						element: <HireLogin/>,
+					},
+					{
+						path: 'register',
+						exact: true,
+						element: <HireRegister/>,
+					}
+				]
+			},
+		]
+	}
 ]
 
 let elements = []

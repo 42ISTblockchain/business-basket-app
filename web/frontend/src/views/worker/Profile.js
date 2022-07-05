@@ -15,11 +15,7 @@ export default function Profile() {
         {
             key: "female",
             value: "Kadın",
-        },
-        {
-            key: "both",
-            value: "Her ikiside",
-        },
+        }
     ];
 
     const {handleSubmit, register} = useForm();
@@ -107,7 +103,7 @@ export default function Profile() {
                                     </label>
                                     <input type="date" {...register("birthDay")}
                                            placeholder="Doğum Tarihi"
-                                           defaultValue={profile.birthDay.toString().slice(0, 10)}
+                                           defaultValue={profile?.birthDay?.toString()?.slice(0, 10)}
                                            className="input input-bordered"/>
                                 </div>
                                 <div className="form-control">
