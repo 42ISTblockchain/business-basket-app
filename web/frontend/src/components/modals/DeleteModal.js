@@ -1,13 +1,22 @@
 import React from "react";
 import {http} from "../../helper/http";
-import {loadData} from "../../slice/JobListSlice";
-import {useDispatch} from "react-redux";
+import {allJobAction, loadData} from "../../slice/JobListSlice";
+import {useDispatch, useSelector} from "react-redux";
 
-export default function DeleteModal({id: id, path: path}) {
+export default function DeleteModal() {
+    const currentJob = useSelector((state) => state.jobList.currentJob)
+    const allJob = useSelector((state) => state.jobList.allJob)
     const dispatch = useDispatch();
+    let copy = [...allJob]
 
     function destroy() {
-        http.delete(path + id).then((res) => console.log(res))
+        http.delete("/hire/job/delete/" + currentJob.id).then(() => {
+            let deletedItem = allJob.indexOf(currentJob)
+            if (deletedItem !== -1) {
+                copy.splice(deletedItem, 1);
+                dispatch(allJobAction(copy))
+            }
+        })
     }
 
     return (

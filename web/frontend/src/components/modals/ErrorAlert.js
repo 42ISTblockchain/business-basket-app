@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function ErrorAlert({error}) {
-    console.log("aerrt",error)
     return (
         <div className="alert alert-error shadow-lg">
             <div>

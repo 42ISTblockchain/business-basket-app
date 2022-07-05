@@ -100,8 +100,8 @@ const auth = routes => routes.map((route) => {
 	}
 	if (route.element)
 		elements.push({path:route.path, element: route.element})
-	// if (route.auth)
-	// 	route.element = <ProtectedRoute>route.element</ProtectedRoute>
+	if (route.auth)
+	 	route.element = <ProtectedRoute>route.element</ProtectedRoute>
 	return route
 })
 
