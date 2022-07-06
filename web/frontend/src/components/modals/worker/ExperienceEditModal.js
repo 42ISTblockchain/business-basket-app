@@ -10,10 +10,11 @@ export default function ExperienceEditModal({experience}) {
         register,
         formState: {errors},
         reset,
-    } = useForm();
+    } = useForm({
+        defaultValues:  experience
+    });
 
     const onSubmit = (data) => {
-        console.log(data)
         http.put('/worker/profile/experience/update/' + experience.id, data).then(res => alertify.success("Deneyim başarıyla güncellendi."))
         window.location.href = "#";
         reset();
@@ -34,8 +35,7 @@ export default function ExperienceEditModal({experience}) {
                         <input
                             type="text"
                             placeholder="Şirket Adı"
-                            className="input input-bordered w-full " {...register('companyName')}
-                            defaultValue={experience.companyName}
+                            className={`input input-bordered w-full ${errors.companyName && 'input-error'}`} {...register('companyName', {required: true})}
                         />
                     </div>
                     <div className="grid lg:grid-cols-2 w-full gap-4 ">
@@ -46,8 +46,7 @@ export default function ExperienceEditModal({experience}) {
                             <input
                                 type="datetime-local"
                                 placeholder="Type here"
-                                className="input input-bordered w-full " {...register('startDate')}
-                                defaultValue={experience?.startDate?.toString()?.slice(0, 16)}
+                                className={`input input-bordered w-full ${errors.startDate && 'input-error'}`} {...register('startDate', {required: true})}
                             />
                         </div>
                         <div className="form-control w-full ">
@@ -57,8 +56,7 @@ export default function ExperienceEditModal({experience}) {
                             <input
                                 type="datetime-local"
                                 placeholder="Type here"
-                                className="input input-bordered w-full " {...register('endDate')}
-                                defaultValue={experience?.endDate?.toString()?.slice(0, 16)}
+                                className={`input input-bordered w-full ${errors.endDate && 'input-error'}`} {...register('endDate', {required: true})}
                             />
                         </div>
                     </div>
@@ -67,16 +65,14 @@ export default function ExperienceEditModal({experience}) {
                             <label className="label">
                                 <span className="label-text">Açıklama</span>
                             </label>
-                            <textarea className="textarea textarea-bordered" {...register('description')}
-                                      defaultValue={experience.description}
+                            <textarea className={`textarea textarea-bordered ${errors.description && 'textarea-error'}`} {...register('description', {required: true})}
                                       placeholder="Açıklama"/>
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Adres</span>
                             </label>
-                            <textarea className="textarea textarea-bordered" {...register('address')}
-                                      defaultValue={experience.address}
+                            <textarea className={`textarea textarea-bordered ${errors.address && 'textarea-error'}`} {...register('address', {required: true})}
                                       placeholder="Adres"/>
                         </div>
 

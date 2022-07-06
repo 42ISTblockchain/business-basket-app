@@ -7,7 +7,7 @@ import ExperienceDeleteModal from "../../components/modals/worker/ExperienceDele
 
 export default function Experience() {
     const [experiences, setExperiences] = useState([]);
-    const [editExperience, setEditExperience] = useState([]);
+    const [editExperience, setEditExperience] = useState(null);
 
     useEffect(() => {
         http.get("/worker/profile/experience").then((res) => setExperiences(res.data));
