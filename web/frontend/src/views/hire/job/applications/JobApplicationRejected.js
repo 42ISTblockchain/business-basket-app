@@ -58,11 +58,11 @@ export default function JobApplication() {
                     return (
                         <tr key={job.id}>
                             <td>{job.worker.firstName + ' ' + job.worker.lastName}</td>
-                            <td>{job.job.category.name}</td>
+                            <td>{job?.job?.category?.name}</td>
                             <td><Badge status={job.status}>{job.status}</Badge></td>
                             <td>{job.worker.phoneNumber}</td>
                             <td>
-                                {new Date(job.job.startDate).toLocaleString() > new Date().toLocaleString() &&
+                                {new Date(job?.job?.startDate).toLocaleString() > new Date().toLocaleString() &&
 
                                     <button className="mx-2 tooltip" data-tip="Onayla"
                                        onClick={() => acceptJobApplication(job.id)}><span

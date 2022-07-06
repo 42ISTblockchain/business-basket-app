@@ -1,6 +1,7 @@
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
+import Modals from "./modals";
 
 export default function Layout() {
 
@@ -8,6 +9,7 @@ export default function Layout() {
         <>
             <Navbar />
             <Sidebar component={Outlet}/>
+            <Modals/>
         </>
     );
 }

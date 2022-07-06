@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	job: [],
+	allJob: [],
 	currentJob: null
 }
 
@@ -10,7 +10,7 @@ export const jobListSlice = createSlice({
 	initialState,
 	reducers: {
 		allJobAction: (state, action) => {
-			state.job = action.payload
+			state.allJob = action.payload
 		},
 		currentJobAction: (state, action) => {
 			state.currentJob = action.payload

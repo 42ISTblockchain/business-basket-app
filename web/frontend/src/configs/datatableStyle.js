@@ -5,7 +5,7 @@ export const customStyles = {
             color: "#1F2937",
             borderRadius: "0.5rem 0.5rem 0 0",
             border: "none",
-            fontSize: "1rem",
+            fontSize: "1rem"
         },
     },
 
@@ -22,7 +22,6 @@ export const customStyles = {
         style: {
             color: '#1F2937',
         },
-        draggingStyle: {},
     },
 
 };

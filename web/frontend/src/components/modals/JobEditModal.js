@@ -6,7 +6,7 @@ export default function JobEditModal() {
   const cities = useSelector((state) => state.genericValue.cities);
   const categories = useSelector((state) => state.genericValue.categories);
   const currentJob = useSelector((state) => state.jobList.currentJob);
-  const jobList = useSelector((state) => state.jobList.job);
+  const jobList = useSelector((state) => state.jobList.allJob);
   let formData = {};
 
   const dispatch = useDispatch();
@@ -55,7 +55,6 @@ export default function JobEditModal() {
 
   return (
     <div>
-      {console.log("render oldu", currentJob.id)}
       <div className="modal" id="jobEditModal">
         <form
           onSubmit={onSubmit}

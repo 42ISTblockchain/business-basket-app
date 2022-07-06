@@ -1,10 +1,11 @@
 import {Outlet} from "react-router-dom";
+import JobDatatable from "../JobsDatatable";
 
-export default function Applications({children}) {
-    console.log(<Outlet />)
+
+export default function Applications() {
      return (
          <>
-             <Outlet />
+             <Outlet/>
          </>
      )
 }

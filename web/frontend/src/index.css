@@ -15,8 +15,3 @@
     @apply bg-primary text-primary-content rounded-lg
 }
 
-@media screen and (min-width: 1024px) {
-	.drawer-content {
-		@apply !z-40
-	}
-}
