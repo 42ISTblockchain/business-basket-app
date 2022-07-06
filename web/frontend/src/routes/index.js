@@ -2,8 +2,8 @@ import Jobs from "../views/hire/job/Jobs";
 import JobApplicationAccepted from "../views/hire/job/applications/JobApplicationAccepted";
 import JobApplicationPending from "../views/hire/job/applications/JobApplicationPending";
 import JobApplicationRejected from '../views/hire/job/applications/JobApplicationRejected';
-import WorkerProfile from "../views/hire/WorkerProfile";
-import Profile from "../views/hire/Profile";
+import WorkerDetail from "../views/hire/WorkerProfile";
+import HireProfile from "../views/hire/Profile";
 import WorkerHome from "../views/worker/Home";
 import FindJob from "../views/worker/FindJob";
 import Home from "../views/hire/Home";
@@ -11,6 +11,11 @@ import Layout from "../components/Layout";
 import { ProtectedRoute } from "../helper/route-check";
 import { Navigate } from "react-router-dom";
 import Applications from "../views/hire/job/applications";
+import WorkerProfile from "../views/worker/Profile";
+import WorkerLogin from "../views/worker/auth/Login";
+import HireLogin from "../views/hire/auth/Login";
+import HireRegister from "../views/hire/auth/Register";
+import Experience from "../views/worker/Experience";
 
 const routes = [
     {
@@ -59,24 +64,25 @@ const routes = [
 								element: <JobApplicationRejected/>
 							},
 						]
-					},			
+					},
 				]
 			},
             {
                 path: 'worker/profile',
                 exact: true,
-                element: <WorkerProfile/>,
+                element: <WorkerDetail/>,
             },
             {
                 path: 'profile',
                 exact: true,
-                element: <Profile/>,
+                element: <HireProfile/>,
             }
         ],
     },
     {
         path: 'worker',
         exact: true,
+		element: <Layout/>,
         children: [
             {
                 path: '',
@@ -87,9 +93,46 @@ const routes = [
                 path: 'find-job',
                 exact: true,
                 element: <FindJob/>,
-            }
+            },
+			{
+				path: 'profile',
+				exact: true,
+				element: <WorkerProfile/>,
+			},
+			{
+				path: 'experience',
+				exact: true,
+				element: <Experience />,
+			}
         ],
-    }
+    },
+	{
+		path: 'auth',
+		exact: true,
+		children: [
+			{
+				path: 'worker/login',
+				exact: true,
+				element: <WorkerLogin/>,
+			},
+			{
+				path: 'hire',
+				exact: true,
+				children: [
+					{
+						path: 'login',
+						exact: true,
+						element: <HireLogin/>,
+					},
+					{
+						path: 'register',
+						exact: true,
+						element: <HireRegister/>,
+					}
+				]
+			},
+		]
+	}
 ]
 
 let elements = []
