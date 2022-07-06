@@ -10,7 +10,7 @@ export default function JobApplicationAccepted() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        http.get("/hire/job-application").then((res) => dispatch(loadData(res.data)));
+        http.get("/hire/job-application").then((res) => console.log(res.data));
     }, []);
 
     function Badge(props) {

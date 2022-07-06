@@ -10,7 +10,6 @@ export default function WorkerProfile() {
 
     function onClickTab(tabid){
        if(tab.current.children[tabid]){
-           console.log(prevTab);
            tab.current.children[prevTab].classList.remove('tab-active');
            tab.current.children[tabid].classList.add("tab-active");
            tabContent.current.children[prevTab].style.display = "none";
