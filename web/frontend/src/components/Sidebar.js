@@ -6,9 +6,9 @@ export default function Sidebar({component: Component}) {
     const auth = JSON.parse(localStorage.getItem("auth"));
     let menus;
 
-    if (auth.role === "hire") {
+    if (auth?.role === "hire") {
         menus = hire;
-    } else if (auth.role === "worker") {
+    } else if (auth?.role === "worker") {
         menus = worker;
     }
 
@@ -20,7 +20,7 @@ export default function Sidebar({component: Component}) {
         <div className="drawer-side">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
             <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
-                {menus.map((menu, index) => {
+                {menus && menus.map((menu, index) => {
                     return (<div key={index}>
                         <li className="mb-2 bg-white dark:bg-[#242930] rounded-lg">
                             <NavLink to={menu.path}>

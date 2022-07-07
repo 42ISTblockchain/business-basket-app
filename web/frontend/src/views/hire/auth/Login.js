@@ -5,11 +5,12 @@ import {loginData} from "../../../slice/authSlice";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import ErrorAlert from "../../../components/modals/ErrorAlert";
+import jwtDecode from "jwt-decode";
 
 export default function Login() {
     const dispatch = useDispatch();
     const {handleSubmit, register} = useForm();
-    const [error, setError] = useState();
+    const [error, setError] = useState(false);
     let navigate = useNavigate();
 
     function login(data) {
@@ -17,7 +18,8 @@ export default function Login() {
             email: data.email,
             password: data.password,
         }).then((res) => {
-            dispatch(loginData(res.data))
+            const {id, email, role} = jwtDecode(res.data.tokens.access_token)
+            dispatch(loginData({id, email, role}))
             localStorage.setItem('auth', JSON.stringify(res.data))
             navigate("/hire", {replace: true})
         }).catch(err => setError(err.response.data.message))
