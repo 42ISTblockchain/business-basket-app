@@ -13,6 +13,7 @@ import { Navigate } from "react-router-dom";
 import Applications from "../views/hire/job/applications";
 import WorkerProfile from "../views/worker/Profile";
 import WorkerLogin from "../views/worker/auth/Login";
+import WorkerRegister from "../views/worker/auth/Register";
 import HireLogin from "../views/hire/auth/Login";
 import HireRegister from "../views/hire/auth/Register";
 import Experience from "../views/worker/Experience";
@@ -111,9 +112,20 @@ const routes = [
 		exact: true,
 		children: [
 			{
-				path: 'worker/login',
+				path: 'worker',
 				exact: true,
-				element: <WorkerLogin/>,
+				children: [
+					{
+						path: 'login',
+						exact: true,
+						element: <WorkerLogin/>,
+					},
+					{
+						path: 'register',
+						exact: true,
+						element: <WorkerRegister/>,
+					}
+				]
 			},
 			{
 				path: 'hire',
@@ -147,9 +159,5 @@ const auth = routes => routes.map((route) => {
 	 	route.element = <ProtectedRoute>route.element</ProtectedRoute>
 	return route
 })
-
-// setInterval(()=>{
-// 	console.log(elements)
-// }, 10000)
 
 export default routes
