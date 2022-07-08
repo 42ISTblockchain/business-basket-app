@@ -27,7 +27,8 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "worker"
       },
       emailVerified: {
         type: Sequelize.DATE,
@@ -48,6 +49,7 @@ module.exports = {
       isBlocked: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
       },
       birthDay: {
         type: Sequelize.DATE,
@@ -67,7 +69,7 @@ module.exports = {
       },
       nationality: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       workPermitType: {
         type: Sequelize.ENUM("studens", "sgk", "foreign"),
