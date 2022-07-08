@@ -12,6 +12,7 @@ module.exports = {
             jobId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
+                onDelete: "CASCADE",
                 references: {
                     model: "Jobs",
                     key: "id",

@@ -26,6 +26,4 @@ const WorkerLanguage = sequelize.define('WorkerLanguage', {
       },
 });
 
-module.exports = {
-	WorkerLanguage
-};
+module.exports = WorkerLanguage

@@ -26,6 +26,4 @@ const WorkerDocument = sequelize.define('WorkerDocument', {
 	}
 });
 
-module.exports = {
-	WorkerDocument
-};
+module.exports = WorkerDocument

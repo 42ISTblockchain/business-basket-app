@@ -16,7 +16,7 @@ class BaseService {
     }
 
     async delete(id) {
-        return await this.BaseModel.destroy({where: {id: id}})
+        return await this.BaseModel.destroy({where: {id: id}, individualHooks: true})
     }
 }
 

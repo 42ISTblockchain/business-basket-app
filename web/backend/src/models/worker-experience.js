@@ -38,6 +38,4 @@ const WorkerExperience = sequelize.define('WorkerExperience', {
       },
 });
 
-module.exports = {
-	WorkerExperience
-};
+module.exports = WorkerExperience

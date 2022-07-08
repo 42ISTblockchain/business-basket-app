@@ -2,6 +2,7 @@
 
 const Sequelize = require("sequelize");
 const {sequelize} = require("../config/database");
+const JobApplication = require("./job-application");
 
 const Job = sequelize.define("Job", {
     description: {
@@ -61,15 +62,19 @@ const Job = sequelize.define("Job", {
     },
 }, {
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    hooks: {
+        afterDestroy: async function (job) {
+            sequelize.models.JobApplication.destroy({where: {jobId: job.id}})
+        },
+    }
 });
 
 Job.associate = function (models) {
     Job.hasOne(models.JobCategory, {as: 'category', foreignKey: "id", sourceKey: 'jobCategoryId'});
     Job.hasOne(models.City, {as: 'city', foreignKey: "id", sourceKey: 'cityId'});
     Job.hasOne(models.Hire, {as: 'hire', foreignKey: "id", sourceKey: 'hireId'});
+    Job.hasMany(models.JobApplication, {as: 'job_applications', foreignKey: "jobId", hooks: true});
 };
 
-module.exports = {
-    Job,
-};
+module.exports = Job

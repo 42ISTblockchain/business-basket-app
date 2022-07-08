@@ -91,6 +91,4 @@ const Worker = sequelize.define("Workers", {
   }
 });
 
-module.exports = {
-  Worker
-};
+module.exports = Worker
