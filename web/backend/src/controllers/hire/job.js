@@ -2,8 +2,8 @@ const HttpStatus = require('http-status')
 const errorWrapper = require('../../scripts/error/errorWrapper')
 const JobService = require('../../services/hires/job')
 const { getUserId } = require('../../scripts/utils/helper')
-const {JobCategory} = require("../../models/job-category");
-const {City} = require("../../models/city");
+const JobCategory = require("../../models/job-category");
+const City = require("../../models/city");
 
 const jobService = new JobService()
 
