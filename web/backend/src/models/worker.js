@@ -69,7 +69,7 @@ const Worker = sequelize.define("Workers", {
   },
   nationality: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   workPermitType: {
     type: Sequelize.ENUM("studens", "sgk", "foreign"),
