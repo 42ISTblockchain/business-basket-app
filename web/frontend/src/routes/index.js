@@ -10,6 +10,8 @@ import Home from "../views/hire/Home";
 import Layout from "../components/Layout";
 import Applications from "../views/hire/job/applications";
 import WorkerProfile from "../views/worker/Profile";
+import WorkerLogin from "../views/worker/auth/Login";
+import WorkerRegister from "../views/worker/auth/Register";
 import HireLogin from "../views/hire/auth/Login";
 import HireRegister from "../views/hire/auth/Register";
 import Experience from "../views/worker/Experience";
@@ -19,53 +21,52 @@ const routes = [
     {
         path: 'hire',
         exact: true,
-        auth: true,
-        role: 'hire',
-        element: <Layout/>,
+		auth: true,
+		element: <Layout/>,
         children: [
+			{
+				index: true,
+				exact: true,
+				element: <Home />
+			},
             {
-                index: true,
-                exact: true,
-                element: <Home/>
-            },
-            {
-                path: "job",
-                exact: true,
-                children: [
-                    {
-                        index: true,
-                        exact: true,
-                        element: <Jobs/>
-                    },
-                    {
-                        path: "applications",
-                        exact: true,
-                        element: <Applications/>,
-                        children: [
-                            {
-                                index: true,
-                                exact: true,
-                                element: <JobApplicationAccepted/>
-                            },
-                            {
-                                path: 'accepted',
-                                exact: true,
-                                element: <JobApplicationAccepted/>
-                            },
-                            {
-                                path: 'pending',
-                                exact: true,
-                                element: <JobApplicationPending/>
-                            },
-                            {
-                                path: 'rejected',
-                                exact: true,
-                                element: <JobApplicationRejected/>
-                            },
-                        ]
-                    },
-                ]
-            },
+				path: "job",
+				exact: true,
+				children: [
+					{
+						index: true,
+						exact: true,
+						element: <Jobs />
+					},
+					{
+						path: "applications",
+						exact: true,
+						element: <Applications />,
+						children: [
+							{
+								index: true,
+								exact: true,
+								element: <JobApplicationAccepted />
+							},
+							{
+								path: 'accepted',
+								exact: true,
+								element: <JobApplicationAccepted/>
+							},
+							{
+								path: 'pending',
+								exact: true,
+								element: <JobApplicationPending/>
+							},
+							{
+								path: 'rejected',
+								exact: true,
+								element: <JobApplicationRejected/>
+							},
+						]
+					},
+				]
+			},
             {
                 path: 'worker/profile',
                 exact: true,
@@ -81,9 +82,7 @@ const routes = [
     {
         path: 'worker',
         exact: true,
-        auth: true,
-        role: 'hire',
-        element: <Layout/>,
+		element: <Layout/>,
         children: [
             {
                 path: '',
@@ -95,40 +94,56 @@ const routes = [
                 exact: true,
                 element: <FindJob/>,
             },
-            {
-                path: 'profile',
-                exact: true,
-                element: <WorkerProfile/>,
-            },
-            {
-                path: 'experience',
-                exact: true,
-                element: <Experience/>,
-            }
+			{
+				path: 'profile',
+				exact: true,
+				element: <WorkerProfile/>,
+			},
+			{
+				path: 'experience',
+				exact: true,
+				element: <Experience />,
+			}
         ],
     },
-    {
-        path: 'auth',
-        exact: true,
-        children: [
-            {
-                path: 'hire',
-                exact: true,
-                children: [
-                    {
-                        path: 'login',
-                        exact: true,
-                        element: <HireLogin/>
-                    },
-                    {
-                        path: 'register',
-                        exact: true,
-                        element: <HireRegister/>
-                    }
-                ]
-            }
-        ]
-    }
+	{
+		path: 'auth',
+		exact: true,
+		children: [
+			{
+				path: 'worker',
+				exact: true,
+				children: [
+					{
+						path: 'login',
+						exact: true,
+						element: <WorkerLogin/>,
+					},
+					{
+						path: 'register',
+						exact: true,
+						element: <WorkerRegister/>,
+					}
+				]
+			},
+			{
+				path: 'hire',
+				exact: true,
+				children: [
+					{
+						path: 'login',
+						exact: true,
+						element: <HireLogin/>,
+					},
+					{
+						path: 'register',
+						exact: true,
+						element: <HireRegister/>,
+					}
+				]
+			},
+		]
+	}
 ]
 
 const auth = routes => routes.map((route) => {
