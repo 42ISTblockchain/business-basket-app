@@ -43,6 +43,4 @@ const HireComment = sequelize.define('HireComment', {
     }
 );
 
-module.exports = {
-    HireComment
-};
+module.exports = HireComment

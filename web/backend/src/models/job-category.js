@@ -18,6 +18,4 @@ const JobCategory = sequelize.define('JobCategory', {
 	}
 });
 
-module.exports = {
-	JobCategory
-};
+module.exports = JobCategory

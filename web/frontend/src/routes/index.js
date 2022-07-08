@@ -8,8 +8,6 @@ import WorkerHome from "../views/worker/Home";
 import FindJob from "../views/worker/FindJob";
 import Home from "../views/hire/Home";
 import Layout from "../components/Layout";
-import { ProtectedRoute } from "../helper/route-check";
-import { Navigate } from "react-router-dom";
 import Applications from "../views/hire/job/applications";
 import WorkerProfile from "../views/worker/Profile";
 import WorkerLogin from "../views/worker/auth/Login";
@@ -17,6 +15,7 @@ import WorkerRegister from "../views/worker/auth/Register";
 import HireLogin from "../views/hire/auth/Login";
 import HireRegister from "../views/hire/auth/Register";
 import Experience from "../views/worker/Experience";
+import {LoginAuthProvider} from "../components/auth";
 
 const routes = [
     {
@@ -147,17 +146,14 @@ const routes = [
 	}
 ]
 
-let elements = []
-
 const auth = routes => routes.map((route) => {
-	if (route.children) {
-		route.children = auth(route.children)
-	}
-	if (route.element)
-		elements.push({path:route.path, element: route.element})
-	if (route.auth)
-	 	route.element = <ProtectedRoute>route.element</ProtectedRoute>
-	return route
+    if (route?.children) {
+        route.children = auth(route.children)
+    }
+    if (route?.auth){
+        route.element = <LoginAuthProvider>{route.element}</LoginAuthProvider>
+    }
+    return route
 })
 
-export default routes
+export default auth(routes)

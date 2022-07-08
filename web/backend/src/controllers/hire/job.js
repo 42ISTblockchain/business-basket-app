@@ -2,7 +2,6 @@ const HttpStatus = require('http-status')
 const errorWrapper = require('../../scripts/error/errorWrapper')
 const JobService = require('../../services/hires/job')
 const { getUserId } = require('../../scripts/utils/helper')
-const {Job} = require("../../models/job");
 const {JobCategory} = require("../../models/job-category");
 const {City} = require("../../models/city");
 
@@ -17,7 +16,7 @@ class JobController {
                 order: [['id', 'DESC']],
                 include: [
                     {model: JobCategory, attributes:['name', 'id'], as: 'category'},
-                    {model: City, attributes:['name', 'id'], as: 'city'}
+                    {model: City, attributes:['name', 'id'], as: 'city'},
                 ]
             })
         res.status(HttpStatus.OK).json(jobs)
@@ -33,7 +32,7 @@ class JobController {
             order: [['id', 'DESC']],
             include: [
                 {model: JobCategory, attributes:['name', 'id'], as: 'category'},
-                {model: City, attributes:['name', 'id'], as: 'city'}
+                {model: City, attributes:['name', 'id'], as: 'city'},
             ]
         })
 

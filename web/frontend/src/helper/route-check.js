@@ -7,7 +7,4 @@ export const UnprotectedRoute = () => {
     return auth?.tokens?.access_token ? <Navigate to={loginPath}/> : <Outlet />
 }
 
-export const ProtectedRoute = () => {
-    const auth = JSON.parse(localStorage.getItem('auth'))
-    return auth?.tokens?.access_token ? <Outlet /> : <Navigate to={loginPath}/>
-}
+

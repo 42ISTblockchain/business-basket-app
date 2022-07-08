@@ -24,6 +24,7 @@ class FindJob {
                 {model: Hire, attributes:['companyName', 'id'], as: 'hire'},
             ]
         })
+        // url?id=5&status&pending
         res.status(HttpStatus.OK).json(jobs)
     })
 

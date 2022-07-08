@@ -1,13 +1,16 @@
 import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {loginData} from "../slice/authSlice";
 
 export default function Navbar() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   function logout() {
     localStorage.removeItem('auth');
-    navigate("/")
-    window.location.reload();
+    dispatch(loginData(null))
+    navigate("/hire", {replace: true})
   }
 
   const role = JSON.parse(localStorage.getItem('auth')).role

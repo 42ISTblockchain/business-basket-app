@@ -68,10 +68,9 @@ const Hire = sequelize.define('Hire', {
 );
 
 Hire.associate = function (models) {
-	Hire.hasMany(models.Job, { foreignKey: 'hireId' })
+	Hire.hasMany(models.Job, {foreignKey: 'hireId'})
 };
 
 
-module.exports = {
-	Hire
-};
+module.exports = Hire
+

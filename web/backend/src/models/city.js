@@ -14,6 +14,5 @@ const City = sequelize.define('City', {
     },
 });
 
-module.exports = {
-    City
-};
+module.exports = City
+

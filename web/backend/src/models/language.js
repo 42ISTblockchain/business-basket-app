@@ -22,6 +22,5 @@ const Language = sequelize.define('Language', {
 	},
 });
 
-module.exports = {
-	Language
-};
+module.exports = Language
+

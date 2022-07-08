@@ -15,6 +15,4 @@ const Country = sequelize.define("Country", {
   },
 });
 
-module.exports = {
-  Country,
-};
+module.exports = Country
