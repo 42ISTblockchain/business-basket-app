@@ -7,7 +7,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
     dialectOptions: {
         encrypt: true
     },
-    //logging: false
+    logging: false
 })
 
 
