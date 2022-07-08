@@ -11,14 +11,13 @@ const jobApplicationService = new Service()
 class JobApplicationController {
      list = errorWrapper(async(req, res) => {
         const applications = await jobApplicationService.list({
-                where: {hireId: getUserId(req.headers)},
-                include: [
-                    {model: Worker, as: 'worker'},
-                    {model: Hire, as: 'hire'},
-                    {model: Job, as: 'job', include: [{model: JobCategory, as: 'category'}]}
-                ]
-            }
-        )
+            where: {hireId: getUserId(req.headers)},
+            include: [
+                {model: Worker, as: 'worker'},
+                {model: Hire, as: 'hire'},
+                {model: Job, as: 'job', include: [{model: JobCategory, as: 'category'}]}
+            ]
+        })
         res.status(HttpStatus.OK).json(applications)
     })
 
