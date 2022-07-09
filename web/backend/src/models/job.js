@@ -2,7 +2,6 @@
 
 const Sequelize = require("sequelize");
 const {sequelize} = require("../config/database");
-const JobApplication = require("./job-application");
 
 const Job = sequelize.define("Job", {
     description: {
@@ -63,6 +62,9 @@ const Job = sequelize.define("Job", {
 }, {
     timestamps: true,
     paranoid: true,
+    defaultScope: {
+        attributes: {exclude: ['updatedAt','deletedAt']}
+    },
     hooks: {
         afterDestroy: async function (job) {
             sequelize.models.JobApplication.destroy({where: {jobId: job.id}})

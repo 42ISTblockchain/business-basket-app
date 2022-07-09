@@ -2,7 +2,7 @@ const errorWrapper = require("../../scripts/error/errorWrapper");
 const JobApplicationService = require("../../services/worker/job-application");
 const {getUserId} = require("../../scripts/utils/helper");
 const HttpStatus = require("http-status");
-const {Hire} = require("../../models/hire");
+const {Hire} = require("../../models");
 const jobApplicationService = new JobApplicationService();
 
 class Home {

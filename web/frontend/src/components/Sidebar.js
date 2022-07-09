@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {hire, worker} from "../configs/menus";
+import {useSelector} from "react-redux";
 
 export default function Sidebar({component: Component}) {
-    const auth = JSON.parse(localStorage.getItem("auth"));
+    const {id, email, role} = useSelector(state => state.auth.value)
     let menus;
 
-    if (auth?.role === "hire") {
+    if (role === "hire") {
         menus = hire;
-    } else if (auth?.role === "worker") {
+    } else if (role === "worker") {
         menus = worker;
     }
 
     return (<div className="drawer drawer-mobile h-[calc(100vh-64px)]">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
-        <div className="drawer-content flex-col h-full lg:p-12 p-4">
+        <div className="drawer-content h-full w-full lg:p-12 p-4">
             <Component/>
         </div>
         <div className="drawer-side">

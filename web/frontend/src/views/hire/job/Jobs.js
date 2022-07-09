@@ -45,6 +45,7 @@ function EditButtons({data}) {
 
 export default function Jobs() {
     const jobList = useSelector((state) => state.jobList.allJob);
+    console.log(jobList)
     const dispatch = useDispatch();
 
     const genders = [
@@ -108,7 +109,10 @@ export default function Jobs() {
     ];
 
     useEffect(() => {
-        http.get("/hire/job").then((res) => dispatch(allJobAction(res.data)));
+        http.get("/hire/job").then((res) => {
+            dispatch(allJobAction(res.data))
+            console.log(res.data)
+        });
         http
             .get("/generic/city")
             .then((res) => dispatch(loadGenericCities(res.data)));

@@ -13,13 +13,20 @@ export default function Login() {
     const [error, setError] = useState(false);
     let navigate = useNavigate();
 
+
     function login(data) {
-        http.post("/hire/auth/login", {
+        http.post("/auth/hire/login", {
             email: data.email,
             password: data.password,
         }).then((res) => {
             const {id, email, role} = jwtDecode(res.data.tokens.access_token)
-            dispatch(loginData({id, email, role}))
+            dispatch(loginData({
+                id,
+                email,
+                role,
+                access_token: res.data.tokens.access_token,
+                refresh_token: res.data.tokens.refresh_token
+            }))
             localStorage.setItem('auth', JSON.stringify(res.data))
             navigate("/hire", {replace: true})
         }).catch(err => setError(err.response.data.message))

@@ -1,62 +1,23 @@
 import React from "react";
-import DataTable from "react-data-table-component";
-import {customStyles} from "../../configs/datatableStyle";
+import {useSelector} from "react-redux";
 
-const columns = [
-    {
-        name: "Title",
-        selector: (row) => row.title
-    },
-    {
-        name: "Year",
-        selector: (row) => row.year,
-    },
-    {
-        name: "Number",
-        selector: (row) => row.number,
-    },
-    {
-        name: "Year",
-        selector: (row) => row.year,
-    },
-    {
-        name: "Year",
-        selector: (row) => row.year,
-    },
-    {
-        name: "Year",
-        selector: (row) => row.year,
-    },
-];
-
-const data = [
-    {
-        id: 1,
-        title: "Beetlejuice",
-        year: "1988",
-        number: 123,
-    },
-    {
-        id: 2,
-        title: "Ghostbusters",
-        year: "1984",
-        number: 53543,
-    },
-    {
-        id: 3,
-        title: "Ghostbusters",
-        year: "1984",
-        number: 53543,
-    },
-];
 
 export default function Home() {
+
+    const jobList = useSelector((state) => state.jobList.allJob);
+    console.log(jobList)
     return (
-        <DataTable
-            columns={columns}
-            data={data}
-            pagination
-            customStyles={customStyles}
-        />
-    );
+        <div className="grid sm:grid-cols-3 2xl:grid-cols-4 gap-5">
+            {jobList && jobList.map((data, index) =>
+                (<div key={index} className="card col-span-2 w-auto bg-base-300 shadow-xl">
+                    <div className="card-body">
+                        <h2 className="card-title ">Card title</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="card-actions justify-end">
+                            <button className="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>)
+            )}
+        </div>);
 }

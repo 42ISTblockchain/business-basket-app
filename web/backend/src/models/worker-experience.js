@@ -36,6 +36,13 @@ const WorkerExperience = sequelize.define('WorkerExperience', {
         allowNull: true,
         type: Sequelize.DATE,
       },
+}, {
+    defaultScope : {
+        attributes: [
+            'workerId',
+            'deletedAt'
+        ]
+    }
 });
 
 module.exports = WorkerExperience

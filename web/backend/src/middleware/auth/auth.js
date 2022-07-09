@@ -1,6 +1,6 @@
 const JWT = require("jsonwebtoken");
 const CustomError = require("../../scripts/error/CustomError");
-const Job = require("../../models/job");
+const {Job} = require("../../models");
 const {
   AUTH_ERROR,
   INVALID_TOKEN_ERROR,

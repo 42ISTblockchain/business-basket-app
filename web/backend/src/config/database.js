@@ -6,8 +6,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
     port: process.env.DB_PORT,
     dialectOptions: {
         encrypt: true
-    },
-    logging: false
+    }
 })
 
 

@@ -11,7 +11,7 @@ export default function Register() {
 
     function authRegister(data) {
 
-        http.post("/hire/auth/register", data).then((res) => {
+        http.post("/auth/hire/register", data).then((res) => {
             navigate("/auth/login", {replace: true})
         }).catch(err => setError(err.response.data.message))
     }

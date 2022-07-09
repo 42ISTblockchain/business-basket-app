@@ -40,6 +40,10 @@ const HireComment = sequelize.define('HireComment', {
         allowNull: true,
         type: Sequelize.DATE,
       },
+    }, {
+    defaultScope: {
+        attributes: {exclude: ['updatedAt','deletedAt']}
+    },
     }
 );
 
