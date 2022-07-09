@@ -104,4 +104,9 @@ const Worker = sequelize.define("Workers", {
         }
     });
 
+Worker.associate = function (models) {
+    Worker.hasMany(models.WorkerExperience, {as: 'experiences', foreignKey: "workerId"})
+};
+
+
 module.exports = Worker

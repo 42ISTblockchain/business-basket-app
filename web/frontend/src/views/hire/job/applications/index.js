@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import InfoModal from "../../../../components/modals/InfoModal";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -8,17 +8,29 @@ import {customStyles} from "../../../../configs/datatableStyle";
 import DataTable from "react-data-table-component";
 import moment from "moment";
 
-
 export default function Applications() {
     const jobApplications = useSelector((state) => state.jobApplicationList.value);
     const dispatch = useDispatch();
-    console.log(jobApplications)
 
     useEffect(() => {
         http.get("/hire/job-application").then((res) => {
             dispatch(jobApplicationDatas(res.data))
         });
     }, []);
+
+    function Actions({data}) {
+        return (
+            <div>
+                <Link
+                    to={"/hire/worker/profile/" + data.worker.id}
+                    className="mx-2 tooltip"
+                    data-tip="CV'yi görüntüle"
+                >
+                    <span className="material-symbols-rounded">visibility</span>
+                </Link>
+            </div>)
+    }
+
     const columns = [
         {
             name: "Başvuran Kişi",
@@ -39,6 +51,14 @@ export default function Applications() {
             name: "Telefon",
             selector: (row) => row.worker.phoneNumber,
 
+        },
+        {
+            cell: (row) => <Actions data={row}/>,
+            style: {
+                minWidth: 'fit-content'
+            },
+            button: true,
+            ignoreRowClick: true
         }
     ];
     return (
