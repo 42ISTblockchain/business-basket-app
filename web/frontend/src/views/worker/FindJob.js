@@ -5,6 +5,7 @@ import {allJobAction, currentJobAction} from "../../slice/JobListSlice";
 import {loadGenericCategories, loadGenericCities} from "../../slice/genericSlice";
 import {useDispatch, useSelector} from "react-redux";
 import alertify from "alertifyjs";
+import jwtDecode from "jwt-decode";
 
 export default function FindJob() {
     const [query, setQuery] = useState({});
@@ -14,7 +15,8 @@ export default function FindJob() {
     const dispatch = useDispatch();
 
     function acceptJobApplication(jobId, hireId) {
-        const workerId = JSON.parse(localStorage.getItem("auth")).id;
+        const access_token = JSON.parse(localStorage.getItem('auth')).tokens.access_token;
+        const workerId = jwtDecode(access_token).id;
         if (window.confirm("İşi Kabul Etmek İstediğinize Emin Misiniz?"))
         {
             http.post(`/worker/job-application/create`, {
@@ -69,7 +71,7 @@ export default function FindJob() {
                     </thead>
                     <tbody>
                     {jobs && jobs.map((job) => (
-                        <tr className="hover">
+                        <tr className="hover" key={job.id}>
                             <th>{job.hire.companyName}</th>
                             <td>{job.category.name}</td>
                             <td>{job.workerCount}</td>

@@ -32,8 +32,10 @@ export default function Profile() {
             setError("Şifreler eşleşmiyor")
             return
         }
-        http.put("/worker/profile/update", data).then(res => setProfile(res.data)).catch(err => setError(err.response.data.message))
-        alertify.success("Profiliniz başarıyla güncellendi")
+        http.put("/worker/profile/update", data).then(res => {
+            setProfile(res.data)
+            alertify.success("Profiliniz başarıyla güncellendi")
+        }).catch(err => setError(err.response.data.message))
     }
 
     return (

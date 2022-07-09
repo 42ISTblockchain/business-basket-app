@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {hire, worker} from "../configs/menus";
+import jwtDecode from "jwt-decode";
 
 export default function Sidebar({component: Component}) {
-    const auth = JSON.parse(localStorage.getItem("auth"));
+    const tokens = JSON.parse(localStorage.getItem("auth"));
+    const auth = jwtDecode(tokens?.tokens?.access_token)
     let menus;
 
     if (auth?.role === "hire") {

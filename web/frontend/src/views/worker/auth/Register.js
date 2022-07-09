@@ -26,7 +26,7 @@ export default function Register() {
             navigate("/auth/worker/login", {replace: true})
         }).catch(err => setError(err.response.data.message))
     }
-    console.log(errors)
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
