@@ -4,7 +4,7 @@ class BaseService {
     }
 
     async list(where) {
-        return await this.BaseModel?.findAll(where || {}) ?? null
+        return await this.BaseModel?.findAll(where || {})
     }
 
     async create(data) {

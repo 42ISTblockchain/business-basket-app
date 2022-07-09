@@ -14,11 +14,11 @@ Content-Type: application/json
 
 
 ### Hire Login
-POST http://localhost:8000/api/hire/auth/login
+POST http://localhost:8000/api/auth/hire/login
 Content-Type: application/json
 
 {
-  "email": "hilton2@hilton.com",
+  "email": "hilton@hilton.com",
   "password": "123456"
 }
 
@@ -41,9 +41,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
 }
 
 ### Hire job list
-GET http://localhost:8000/api/generic/city
+GET http://localhost:8000/api/hire/job-applications
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU2MjgwODQxLCJleHAiOjE2NTY4ODU2NDF9.ftPL3oHhQHmiATWdc8tlPt7S5EUf2MNt3-zHTdHG5Tk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImhpcmUiLCJlbWFpbCI6ImhpbHRvbkBoaWx0b24uY29tIiwiaWF0IjoxNjU3MzAzNTI3LCJleHAiOjE2NTc5MDgzMjd9.lIfruI1ibIJP9Q1qTqetQgRcky2CEVqDQMtwjNj8xUI
 
 {}
 

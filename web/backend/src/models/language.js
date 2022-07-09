@@ -20,6 +20,10 @@ const Language = sequelize.define('Language', {
 		allowNull: true,
 		type: Sequelize.DATE,
 	},
+}, {
+	defaultScope: {
+		attributes: {exclude: ['password', 'updatedAt','deletedAt']}
+	},
 });
 
 module.exports = Language

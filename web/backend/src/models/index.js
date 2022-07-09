@@ -26,7 +26,8 @@ const db = {
 	WorkerDocument,
 	WorkerExperience,
 	WorkerLanguage,
-	Language
+	Language,
+    WorkerComment
 };
 
 Object.keys(db).forEach(function(modelName) {

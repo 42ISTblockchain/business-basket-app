@@ -2,8 +2,10 @@ const HttpStatus = require('http-status')
 const errorWrapper = require('../../scripts/error/errorWrapper')
 const JobService = require('../../services/hires/job')
 const { getUserId } = require('../../scripts/utils/helper')
-const JobCategory = require("../../models/job-category");
-const City = require("../../models/city");
+const {JobCategory} = require("../../models");
+const {City} = require("../../models");
+const {Country} = require("../../models");
+
 
 const jobService = new JobService()
 
@@ -12,7 +14,7 @@ class JobController {
     listJob = errorWrapper(async (req, res) => {
         const jobs = await jobService.list({
                 where: {hireId: getUserId(req.headers)},
-				attributes: { exclude: ["cityId", "hireId", "jobCategoryId"] },
+				attributes: { exclude: ["cityId", "hireId", "jobCategoryId", "deletedAt", "updatedAt"] },
                 order: [['id', 'DESC']],
                 include: [
                     {model: JobCategory, attributes:['name', 'id'], as: 'category'},

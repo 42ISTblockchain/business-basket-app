@@ -25,7 +25,10 @@ const JobApplication = sequelize.define('JobApplication', {
 	}
 }, {
 	timestamps: true,
-	paranoid: true
+	paranoid: true,
+	defaultScope : {
+		attributes: {exclude: ["deletedAt", "updatedAt", "hireId", "workerId", "createdAt", "jobId"]},
+	}
 });
 
 JobApplication.associate = function (models) {

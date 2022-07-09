@@ -8,11 +8,11 @@ export const JobApplicationListSlice = createSlice({
 	name: "jobApplication",
 	initialState,
 	reducers: {
-		loadData: (state, action) => {
+		jobApplicationDatas: (state, action) => {
 			state.value = action.payload
 		}
 	}
 })
 
-export const {loadData} = JobApplicationListSlice.actions
+export const {jobApplicationDatas} = JobApplicationListSlice.actions
 export default JobApplicationListSlice.reducer

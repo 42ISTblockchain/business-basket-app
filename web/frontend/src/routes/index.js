@@ -87,7 +87,7 @@ const routes = [
             {
                 path: '',
                 exact: true,
-                element: <WorkerHome/>,
+				element: <WorkerHome/>,
             },
             {
                 path: 'find-job',
