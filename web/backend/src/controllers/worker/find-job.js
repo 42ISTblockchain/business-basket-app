@@ -4,6 +4,7 @@ const JobApplicationService = require('../../services/hires/job-application')
 const JobService = require('../../services/hires/job')
 const {JobCategory} = require("../../models");
 const {Hire} = require("../../models");
+
 const {getUserId} = require("../../scripts/utils/helper");
 const {Op} = require("sequelize");
 const jobApplicationService = new JobApplicationService()

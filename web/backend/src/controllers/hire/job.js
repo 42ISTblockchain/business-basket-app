@@ -6,6 +6,7 @@ const {JobCategory} = require("../../models");
 const {City} = require("../../models");
 const {Country} = require("../../models");
 
+
 const jobService = new JobService()
 
 

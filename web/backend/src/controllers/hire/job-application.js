@@ -5,7 +5,9 @@ const {Job} = require("../../models");
 const {JobCategory} = require("../../models");
 const Service = require('../../services/hires/job-application')
 const {getUserId} = require('../../scripts/utils/helper')
+
 const errorWrapper = require("../../scripts/error/errorWrapper");
+
 const jobApplicationService = new Service()
 
 class JobApplicationController {
@@ -37,6 +39,7 @@ class JobApplicationController {
                 ]
             }
         )
+
         res.status(HttpStatus.OK).json(applications)
     })
 

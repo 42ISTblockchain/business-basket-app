@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {hire, worker} from "../configs/menus";
+
 import {useSelector} from "react-redux";
 
 export default function Sidebar({component: Component}) {
     const {id, email, role} = useSelector(state => state.auth.value)
+
     let menus;
 
     if (role === "hire") {

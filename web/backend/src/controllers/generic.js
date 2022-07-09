@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status')
-const {City} = require("../models");
-const {JobCategory} = require("../models");
+const City = require("../models/city");
+const JobCategory = require("../models/job-category");
 
 class Generic {
     async city(req, res) {
