@@ -1,17 +1,12 @@
+import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import InfoModal from "../../../../components/modals/InfoModal";
+import {useDispatch, useSelector} from "react-redux";
 import {http} from "../../../../helper/http";
-import {useSelector, useDispatch} from "react-redux";
 import {jobApplicationDatas} from "../../../../slice/JobApplicationListSlice";
 
-export default function JobApplication() {
-    const [description, setDescription] = useState();
+export default function Applications() {
     const jobApplications = useSelector((state) => state.jobApplicationList.value);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        http.get("/hire/job-application").then((res) => dispatch(jobApplicationDatas(res.data)));
-    }, []);
 
     function acceptJobApplication(id) {
         if (window.confirm("Gerçekten işe almak istiyor musunuz?")) {
@@ -23,59 +18,58 @@ export default function JobApplication() {
         }
     }
 
-    function deleteJobApplication(id) {
-        http.put(`/hire/job-application/update/${id}`, {status: 'rejected'}).then((res) => {
-            console.log(res)
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-
-    function Badge(props) {
-        let className = "badge gap-2";
-        if (props.status === "accepted") {
-            className += " badge-success";
-        } else if (props.status === "pending") {
-            className += " badge-warning";
-        } else if (props.status === "rejected") {
-            className += " badge-error";
+    function rejectJobApplication(id) {
+        if (window.confirm("Gerçekten reddetmek istiyor musunuz?")) {
+            http.put(`/hire/job-application/update/${id}`, {status: 'rejected'}).then((res) => {
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
-        return (
-            <div className={className}>
-                {props.children}
-            </div>
-        )
     }
 
+    useEffect(() => {
+        http.get("/hire/job-application").then((res) => {
+            dispatch(jobApplicationDatas(res.data))
+        });
+    }, []);
 
-    return (<>
-        {jobApplications && jobApplications.filter(job => job.status === "pending").map(job => {
-            return (
-                <tr key={job.id}>
-                    <td>{job.worker.firstName + ' ' + job.worker.lastName}</td>
-                    <td>{job?.job?.category?.name}</td>
-                    <td><Badge status={job.status}>{job.status}</Badge></td>
-                    <td>{job.worker.phoneNumber}</td>
-                    <td>
-                        <button className="mx-2 tooltip" data-tip="Onayla"
-                                onClick={() => acceptJobApplication(job.id)}><span
-                            className="material-symbols-rounded">check_circle</span></button>
-                        <button className="mx-2 tooltip" data-tip="Reddet"
-                                onClick={() => deleteJobApplication(job.id)}><span
-                            className="material-symbols-rounded">cancel</span></button>
-                        <a href="#infoModal"
-                           onClick={() =>
-                               setDescription({
-                                   title: "İş Detayı",
-                                   message: job.job.description
-                               })
-                           }
-                           className="mx-2 tooltip"
-                           data-tip="Detay"><span className="material-symbols-rounded">info</span></a>
-                    </td>
-                </tr>
-            )
-        })}
-
-    </>);
+    return (
+        <>
+            {jobApplications && jobApplications.filter(job => job.status === "pending").map(application => (
+                <div className="indicator mr-10 mb-10 bg-base-200 rounded-2xl">
+                    <div className="indicator-item indicator-bottom right-20">
+                        <button className="btn btn-success text-white mx-auto tooltip" onClick={() => acceptJobApplication(application.id)} data-tip="Onayla"><span
+                            className="material-symbols-rounded">check_circle</span>
+                        </button>
+                        <button className="btn btn-error ml-2 mx-auto tooltip" onClick={() => rejectJobApplication(application.id)} data-tip="Reddet"><span
+                            className="material-symbols-rounded">cancel</span>
+                        </button>
+                        <button className="btn btn-primary ml-2 mx-auto tooltip" data-tip="CV'yi görüntüle">
+                            <Link to={"/hire/worker/profile/" + application.worker.id}>
+                                <span className="material-symbols-rounded">visibility</span>
+                            </Link>
+                        </button>
+                    </div>
+                    <div className="card border w-80">
+                        <div className="card-body">
+                            <div className="flex mb-5">
+                                <div className="avatar mr-5">
+                                    <div className="w-10 rounded-full">
+                                        <img src="https://placeimg.com/192/192/people"/>
+                                    </div>
+                                </div>
+                                <h2 className="card-title">{application.worker.firstName} {application.worker.lastName}</h2>
+                            </div>
+                            <span className="badge badge-outline">{application?.job?.category?.name}</span>
+                            <div>
+                                <span className="material-symbols-rounded text-sm mr-2">call</span>
+                                <span>{application.worker.phoneNumber}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </>
+    )
 }
