@@ -67,11 +67,11 @@ const routes = [
 					},
 				]
 			},
-            {
-                path: 'worker/profile',
-                exact: true,
-                element: <WorkerDetail/>,
-            },
+			{
+				path: 'worker/profile/:id',
+				exact: true,
+				element: <WorkerDetail/>,
+			},
             {
                 path: 'profile',
                 exact: true,
@@ -82,6 +82,7 @@ const routes = [
     {
         path: 'worker',
         exact: true,
+		auth: true,
 		element: <Layout/>,
         children: [
             {

@@ -39,8 +39,11 @@ const WorkerExperience = sequelize.define('WorkerExperience', {
 }, {
     defaultScope : {
         attributes: [
-            'workerId',
-            'deletedAt'
+            'companyName',
+            'address',
+            'startDate',
+            'endDate',
+            'description'
         ]
     }
 });

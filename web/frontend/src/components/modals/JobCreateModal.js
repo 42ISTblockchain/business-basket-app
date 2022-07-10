@@ -32,7 +32,7 @@ export default function JobCreateModal() {
         axiosInstance.get("/generic/city").then((res) => setCity(res.data));
         axiosInstance.get("/generic/category").then((res) => setCategory(res.data));
     }, []);
-
+console.log(errors)
     return (<div>
         <div className="modal" id="jobCreateModal">
             <form onSubmit={handleSubmit(onSubmit)} className="modal-box w-12/12 flex flex-col items-center">
@@ -59,7 +59,8 @@ export default function JobCreateModal() {
                         </label>
                         <label className="input-group">
                             <input type="number" placeholder="Ücret giriniz..."
-                                   className="input input-bordered w-full" {...register('price')}/>
+                                   className={`input input-bordered w-full ${errors.price && 'input-error'}`}
+                                   {...register('price', {required: true})}/>
                             <span>TRY</span>
                         </label>
                     </div>
@@ -97,7 +98,7 @@ export default function JobCreateModal() {
                         <input
                             type="datetime-local"
                             placeholder="Type here"
-                            className="input input-bordered w-full " {...register('startDate')}
+                            className={`input input-bordered w-full ${errors.startDate && 'input-error'}`} {...register('startDate', {required: true})}
                         />
                     </div>
                     <div className="form-control w-full ">
@@ -107,7 +108,7 @@ export default function JobCreateModal() {
                         <input
                             type="datetime-local"
                             placeholder="Type here"
-                            className="input input-bordered w-full " {...register('endDate')}
+                            className={`input input-bordered w-full ${errors.endDate && 'input-error'}`} {...register('endDate',{required: true})}
                         />
                     </div>
                 </div>
@@ -119,21 +120,21 @@ export default function JobCreateModal() {
                         <input
                             type="number"
                             placeholder="Çalışan sayısı giriniz..."
-                            className="input input-bordered w-full" {...register('workerCount')}
+                            className={`input input-bordered w-full ${errors.workerCount && 'input-error'}`} {...register('workerCount', {required: true})}
                         />
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Açıklama</span>
                         </label>
-                        <textarea className="textarea textarea-bordered" {...register('description')}
+                        <textarea className={`textarea textarea-bordered ${errors.description && 'textarea-error'}`} {...register('description', {required: true})}
                                   placeholder="Açıklama"/>
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Adres</span>
                         </label>
-                        <textarea className="textarea textarea-bordered" {...register('address')}
+                        <textarea className={`textarea textarea-bordered ${errors.address && 'textarea-error'}`} {...register('address', {required: true})}
                                   placeholder="Adres"/>
                     </div>
                     <div className="form-control mt-3 w-full ">

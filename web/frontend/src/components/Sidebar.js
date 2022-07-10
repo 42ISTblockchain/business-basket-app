@@ -5,8 +5,8 @@ import {hire, worker} from "../configs/menus";
 import {useSelector} from "react-redux";
 
 export default function Sidebar({component: Component}) {
-    const {id, email, role} = useSelector(state => state.auth.value)
-
+    const {role} = useSelector(state => state.auth.value)
+    console.log("test",role)
     let menus;
 
     if (role === "hire") {

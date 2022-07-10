@@ -7,6 +7,10 @@ class BaseService {
         return await this.BaseModel?.findAll(where || {})
     }
 
+    async find(where) {
+        return await this.BaseModel?.findOne(where)
+    }
+
     async create(data) {
         return await this.BaseModel?.build(data, data.fields).save()
     }
