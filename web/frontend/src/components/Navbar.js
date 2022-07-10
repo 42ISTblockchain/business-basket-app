@@ -60,6 +60,13 @@ export default function Navbar() {
                 Profil
               </NavLink>
             </li>
+            {role === 'worker' && (
+                <li>
+                  <NavLink to={`/${role}/experience`} className="justify-between">
+                    Deneyimlerim
+                  </NavLink>
+                </li>
+            )}
             <li>
               <a onClick={() => logout()}>Çıkış yap</a>
             </li>

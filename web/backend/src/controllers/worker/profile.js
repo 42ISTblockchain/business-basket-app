@@ -24,7 +24,8 @@ class Profile {
     listExperience = errorWrapper(async (req, res) => {
         const workerId = getUserId(req.headers);
         const experiences = await experienceService.list({
-            where: {workerId}
+            where: {workerId: workerId},
+            order: [['endDate', 'desc']]
         });
         res.status(HttpStatus.OK).json(experiences);
     })

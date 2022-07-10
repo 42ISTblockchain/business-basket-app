@@ -82,6 +82,7 @@ const routes = [
     {
         path: 'worker',
         exact: true,
+		auth: true,
 		element: <Layout/>,
         children: [
             {
