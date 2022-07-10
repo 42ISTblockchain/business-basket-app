@@ -6,14 +6,13 @@ import jwtDecode from "jwt-decode";
 const loginPath = '/auth/hire/login'
 
 const LoginAuthProvider = function ({children}) {
-    const auth = JSON.parse(localStorage.getItem('auth'))
+    const accessToken = JSON.parse(localStorage.getItem('auth'))?.tokens?.access_token
     const dispatch = useDispatch()
-    const data = jwtDecode(auth.tokens.access_token)
-
-    if (!(auth?.tokens?.access_token)){
+    if (!accessToken){
         dispatch(loginData(null))
         return <Navigate to={loginPath}/>
     }
+    const data = jwtDecode(accessToken)
     dispatch(loginData(data))
     return children
 }

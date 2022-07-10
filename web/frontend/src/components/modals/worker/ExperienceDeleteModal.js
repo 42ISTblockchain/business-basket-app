@@ -1,10 +1,10 @@
 import React from "react";
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 
 export default function ExperienceDeleteModal({id: id, path: path}) {
 
     function destroy() {
-        http.delete(path + id).then((res) => console.log(res))
+        axiosInstance.delete(path + id).then((res) => console.log(res))
     }
 
     return (

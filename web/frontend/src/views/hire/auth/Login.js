@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
-import {http} from "../../../helper/http";
 import {loginData} from "../../../slice/authSlice";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import ErrorAlert from "../../../components/modals/ErrorAlert";
 import jwtDecode from "jwt-decode";
+import axiosInstance from "../../../helper/http"
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function Login() {
 
 
     function login(data) {
-        http.post("/auth/hire/login", {
+        axiosInstance.post("/auth/hire/login", {
             email: data.email,
             password: data.password,
         }).then((res) => {

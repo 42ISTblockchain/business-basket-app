@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import InfoModal from "../../../../components/modals/InfoModal";
-import {http} from "../../../../helper/http";
+import axiosInstance from "../../../../helper/http";
 import {useSelector, useDispatch} from "react-redux";
 import {jobApplicationDatas} from "../../../../slice/JobApplicationListSlice";
 
@@ -10,11 +10,11 @@ export default function JobApplication() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        http.get("/hire/job-application").then((res) => dispatch(jobApplicationDatas(res.data)));
+        axiosInstance.get("/hire/job-application").then((res) => dispatch(jobApplicationDatas(res.data)));
     }, []);
 
     function acceptJobApplication(id) {
-        http.put(`/hire/job-application/update/${id}`, {status: 'accepted'}).then((res) => {
+        axiosInstance.put(`/hire/job-application/update/${id}`, {status: 'accepted'}).then((res) => {
             console.log(res)
         }).catch((err) => {
             console.log(err)

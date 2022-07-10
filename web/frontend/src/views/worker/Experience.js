@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import ExperienceCreateModal from "../../components/modals/worker/ExperienceCreateModal";
 import ExperienceEditModal from "../../components/modals/worker/ExperienceEditModal";
 import ExperienceDeleteModal from "../../components/modals/worker/ExperienceDeleteModal";
@@ -10,7 +10,7 @@ export default function Experience() {
     const [editExperience, setEditExperience] = useState(null);
 
     useEffect(() => {
-        http.get("/worker/profile/experience").then((res) => setExperiences(res.data));
+        axiosInstance.get("/worker/profile/experience").then((res) => setExperiences(res.data));
     }, []);
 
     return (

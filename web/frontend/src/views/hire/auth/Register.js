@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import ErrorAlert from "../../../components/modals/ErrorAlert";
@@ -11,7 +11,7 @@ export default function Register() {
 
     function authRegister(data) {
 
-        http.post("/auth/hire/register", data).then((res) => {
+        axiosInstance.post("/auth/hire/register", data).then((res) => {
             navigate("/auth/login", {replace: true})
         }).catch(err => setError(err.response.data.message))
     }

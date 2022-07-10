@@ -1,6 +1,6 @@
 import InfoModal from "../../components/modals/InfoModal";
 import {useEffect, useState} from "react";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import {allJobAction, currentJobAction} from "../../slice/JobListSlice";
 import {loadGenericCategories, loadGenericCities} from "../../slice/genericSlice";
 import {useDispatch, useSelector} from "react-redux";
@@ -19,7 +19,7 @@ export default function FindJob() {
         const workerId = jwtDecode(access_token).id;
         if (window.confirm("İşi Kabul Etmek İstediğinize Emin Misiniz?"))
         {
-            http.post(`/worker/job-application/create`, {
+            axiosInstance.post(`/worker/job-application/create`, {
                 jobId: jobId,
                 status: "pending",
                 workerId: workerId,
@@ -31,11 +31,11 @@ export default function FindJob() {
     }
 
     useEffect(() => {
-        http.get("/generic/city")
+        axiosInstance.get("/generic/city")
             .then((res) => dispatch(loadGenericCities(res.data)));
-        http.get("/generic/category")
+        axiosInstance.get("/generic/category")
             .then((res) => dispatch(loadGenericCategories(res.data)));
-        http.get("/worker/job-application/", {params: query})
+        axiosInstance.get("/worker/job-application/", {params: query})
             .then((res) => setJob(res.data));
     }, [query]);
 

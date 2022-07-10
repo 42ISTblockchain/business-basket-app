@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 import {loginData} from "../../../slice/authSlice";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
@@ -13,7 +13,7 @@ export default function Login() {
     let navigate = useNavigate();
 
     function login(data) {
-        http.post("/worker/auth/login", {
+        axiosInstance.post("/worker/auth/login", {
             email: data.email,
             password: data.password,
         }).then((res) => {

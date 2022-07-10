@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useForm} from "react-hook-form";
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 import alertify from "alertifyjs";
 import ErrorAlert from "../ErrorAlert";
 
@@ -14,12 +14,10 @@ export default function ExperienceCreateModal() {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
-        http.post('/worker/profile/experience/create', data).then(res => alertify.success("Deneyim başarıyla eklendi."))
+        axiosInstance.post('/worker/profile/experience/create', data).then(res => alertify.success("Deneyim başarıyla eklendi."))
         window.location.href = "#";
         reset();
     };
-    console.log(errors)
     return (
         <div>
             <div className="modal" id="experienceCreateModal">

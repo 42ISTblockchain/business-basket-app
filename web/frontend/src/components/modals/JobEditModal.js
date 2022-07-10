@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { currentJobAction, allJobAction } from "../../slice/JobListSlice";
-import { http } from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import alertify from "alertifyjs";
 export default function JobEditModal() {
   const cities = useSelector((state) => state.genericValue.cities);
@@ -44,7 +44,7 @@ export default function JobEditModal() {
       }
     }
     resp = jobList.map((obj) => (formData.id === obj.id ? formData : obj));
-    http.put("/hire/job/update/" + currentJob.id, formData).then(() => {
+    axiosInstance.put("/hire/job/update/" + currentJob.id, formData).then(() => {
       dispatch(currentJobAction(formData));
       dispatch(allJobAction(resp));
       alertify.success("İşlem başarılı bir şekilde gerçekleşti.");

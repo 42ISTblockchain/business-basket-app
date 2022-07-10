@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useForm} from "react-hook-form";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import {allJobAction} from "../../slice/JobListSlice";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -21,7 +21,7 @@ export default function JobCreateModal() {
     } = useForm();
 
     const onSubmit = (data) => {
-        http.post('/hire/job/create', data).then(res => dispatch(allJobAction([...jobList, res.data])))
+        axiosInstance.post('/hire/job/create', data).then(res => dispatch(allJobAction([...jobList, res.data])))
         window.location.href = "#";
         reset();
     };
@@ -29,8 +29,8 @@ export default function JobCreateModal() {
     const [categories, setCategory] = useState()
 
     useEffect(() => {
-        http.get("/generic/city").then((res) => setCity(res.data));
-        http.get("/generic/category").then((res) => setCategory(res.data));
+        axiosInstance.get("/generic/city").then((res) => setCity(res.data));
+        axiosInstance.get("/generic/category").then((res) => setCategory(res.data));
     }, []);
 
     return (<div>
@@ -44,8 +44,8 @@ export default function JobCreateModal() {
                         <label className="label">
                             <span className="label-text">İş Kategorisi</span>
                         </label>
-                        <select className="select select-bordered w-full " {...register('jobCategoryId')}>
-                            <option disabled selected>
+                        <select defaultValue="Seçiniz" className="select select-bordered w-full " {...register('jobCategoryId')}>
+                            <option disabled>
                                 Seçiniz
                             </option>
                             {categories && categories.map(category => <option key={category.id} value={category.id}>
@@ -67,8 +67,9 @@ export default function JobCreateModal() {
                         <label className="label">
                             <span className="label-text">İl</span>
                         </label>
-                        <select className="select select-bordered w-full " {...register('cityId')}>
-                            <option disabled selected>
+                        <select defaultValue="Seçiniz"
+                                className="select select-bordered w-full " {...register('cityId')}>
+                            <option disabled>
                                 Seçiniz
                             </option>
                             {cities && cities.map(city => <option key={city.id} value={city.id}>
@@ -80,8 +81,8 @@ export default function JobCreateModal() {
                         <label className="label">
                             <span className="label-text">Cinsiyet</span>
                         </label>
-                        <select className="select select-bordered w-full " {...register('gender')}>
-                            <option disabled selected>
+                        <select defaultValue="Seçiniz" className="select select-bordered w-full " {...register('gender')}>
+                            <option disabled>
                                 Seçiniz
                             </option>
                             {genders.map(gender => <option key={gender.value} value={gender.key}>

@@ -7,7 +7,7 @@ const app = express()
 const cors = require('cors')
 
 app.use(cors({
-	origin: process.env.APP_URL
+	origin: "http://localhost:3000"
 }))
 
 app.use(helmet())

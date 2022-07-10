@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 
 export default function Home() {
     const [jobs, setJobs] = useState();
 
     useEffect(() => {
-        http.get('/worker/my-job-application').then(res => setJobs(res.data))
+        axiosInstance.get('/worker/my-job-application').then(res => setJobs(res.data))
     }, [])
 
     function badge(status) {
