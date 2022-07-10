@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
-import TabMenu from "../../components/TabMenu";
-import {http} from "../../helper/http";
+import TabMenu from "components/TabMenu";
+import {http} from "helper/http";
 import {useParams} from "react-router-dom";
 import moment from "moment";
 
