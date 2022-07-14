@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import {useEffect, useState} from "react";
 import ErrorAlert from "../../components/modals/ErrorAlert";
 import alertify from "alertifyjs";
@@ -12,7 +12,7 @@ export default function Profile() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        http.get("/hire/profile").then(res => setProfile(res.data))
+        axiosInstance.get("/hire/profile").then(res => setProfile(res.data))
     }, [])
 
     const onSubmit = data => {
@@ -20,7 +20,7 @@ export default function Profile() {
             setError("Şifreler eşleşmiyor")
             return
         }
-        http.put("/hire/profile/update", data).then(res => setProfile(res.data)).catch(err => setError(err.response.data.message))
+        axiosInstance.put("/hire/profile/update", data).then(res => setProfile(res.data)).catch(err => setError(err.response.data.message))
         alertify.success("Profiliniz başarıyla güncellendi")
     }
 

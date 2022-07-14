@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 
 export default function Home() {
     const [jobAccepteds, setJobAccepteds] = useState();
@@ -7,9 +7,9 @@ export default function Home() {
     const [jobRejecteds, setJobRejecteds] = useState();
 
     useEffect(() => {
-        http.get('/worker/my-job-application', {params: {status: 'accepted'}}).then(res => setJobAccepteds(res.data))
-        http.get('/worker/my-job-application', {params: {status: 'pending'}}).then(res => setJobPendings(res.data))
-        http.get('/worker/my-job-application', {params: {status: 'rejected'}}).then(res => setJobRejecteds(res.data))
+        axiosInstance.get('/worker/my-job-application', {params: {status: 'accepted'}}).then(res => setJobAccepteds(res.data))
+        axiosInstance.get('/worker/my-job-application', {params: {status: 'pending'}}).then(res => setJobPendings(res.data))
+        axiosInstance.get('/worker/my-job-application', {params: {status: 'rejected'}}).then(res => setJobRejecteds(res.data))
     }, [])
 
     function badge(status) {

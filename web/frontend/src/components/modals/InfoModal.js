@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 export default function InfoModal() {
   const currentJob = useSelector((state) => state.jobList.currentJob);
+  console.log(currentJob)
   return (
     <div className="modal" id="infoModal">
       <div className="modal-box">

@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import ErrorAlert from "../../../components/modals/ErrorAlert";
+import {ReactComponent as LoginIcon} from 'assets/login.svg';
+
 
 export default function Register() {
     const {handleSubmit, register, formState: {errors}} = useForm();
@@ -22,7 +24,7 @@ export default function Register() {
 
     function authRegister(data) {
 
-        http.post("/worker/auth/register", data).then((res) => {
+        axiosInstance.post("/worker/auth/register", data).then((res) => {
             navigate("/auth/worker/login", {replace: true})
         }).catch(err => setError(err.response.data.message))
     }
@@ -32,8 +34,7 @@ export default function Register() {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Kayıt Ol</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-                        exercitationem quasi. In deleniti eaque aut ssrepudiandae et a id nisi.</p>
+                    <LoginIcon/>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-2xl shadow-2xl bg-base-100">
                     <div className="card-body">

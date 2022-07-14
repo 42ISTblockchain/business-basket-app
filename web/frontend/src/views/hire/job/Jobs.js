@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 import {useSelector, useDispatch} from "react-redux";
 import {allJobAction, currentJobAction} from "../../../slice/JobListSlice";
-
 import {
     loadGenericCategories,
     loadGenericCities,
@@ -13,7 +12,6 @@ import moment from "moment";
 
 function EditButtons({data}) {
     const dispatch = useDispatch();
-
     return (
         <div>
             <a
@@ -40,12 +38,12 @@ function EditButtons({data}) {
             >
                 <span className="material-symbols-rounded">close</span>
             </a>
-        </div>)
+        </div>
+    )
 }
 
 export default function Jobs() {
     const jobList = useSelector((state) => state.jobList.allJob);
-    console.log(jobList)
     const dispatch = useDispatch();
 
     const genders = [
@@ -109,15 +107,15 @@ export default function Jobs() {
     ];
 
     useEffect(() => {
-        http.get("/hire/job").then((res) => {
+
+        axiosInstance.get("hire/job").then((res) => {
             dispatch(allJobAction(res.data))
-            console.log(res.data)
         });
-        http
-            .get("/generic/city")
+        axiosInstance
+            .get("generic/city")
             .then((res) => dispatch(loadGenericCities(res.data)));
-        http
-            .get("/generic/category")
+        axiosInstance
+            .get("generic/category")
             .then((res) => dispatch(loadGenericCategories(res.data)));
     }, []);
 

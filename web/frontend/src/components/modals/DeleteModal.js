@@ -1,5 +1,5 @@
 import React from "react";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import {allJobAction, loadData} from "../../slice/JobListSlice";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -10,7 +10,7 @@ export default function DeleteModal() {
     let copy = [...allJob]
 
     function destroy() {
-        http.delete("/hire/job/delete/" + currentJob.id).then(() => {
+        axiosInstance.delete("/hire/job/delete/" + currentJob.id).then(() => {
             let deletedItem = allJob.indexOf(currentJob)
             if (deletedItem !== -1) {
                 copy.splice(deletedItem, 1);

@@ -17,16 +17,16 @@ export default function Sidebar({component: Component}) {
 
     return (
         <div className="drawer drawer-mobile h-[calc(100vh-64px)]">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
-            <div className="drawer-content h-auto w-full lg:p-12 p-4">
+            <input id="sidebar" type="checkbox" className="drawer-toggle"/>
+            <div className="drawer-content h-full w-full lg:p-12 p-4 dark:bg-base-300 bg-base-300">
                 <Component/>
             </div>
             <div className="drawer-side">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
+                <label htmlFor="sidebar" className="drawer-overlay"></label>
+                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
                     {menus && menus.map((menu, index) => {
                         return (<div key={index}>
-                            <li className="mb-2 bg-white dark:bg-[#242930] rounded-lg">
+                            <li className="mb-2 rounded-lg">
                                 <NavLink to={menu.path}>
                                   <span className="material-symbols-rounded">
                                     {menu.icon}
@@ -37,7 +37,7 @@ export default function Sidebar({component: Component}) {
                             {menu.children && menu.children.map((child, index) => {
                                 return (<li
                                     key={index}
-                                    className="mb-2 ml-8 bg-white dark:bg-[#242930] rounded-lg"
+                                    className="mb-2 ml-8 rounded-lg"
                                 >
                                     <NavLink key={index} to={child?.path}>
                           <span className="material-symbols-rounded">
@@ -51,5 +51,6 @@ export default function Sidebar({component: Component}) {
                     })}
                 </ul>
             </div>
-        </div>);
+        </div>
+    );
 }

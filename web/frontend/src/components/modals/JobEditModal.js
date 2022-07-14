@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { currentJobAction, allJobAction } from "../../slice/JobListSlice";
-import { http } from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import alertify from "alertifyjs";
+
 export default function JobEditModal() {
   const cities = useSelector((state) => state.genericValue.cities);
   const categories = useSelector((state) => state.genericValue.categories);
   const currentJob = useSelector((state) => state.jobList.currentJob);
   const jobList = useSelector((state) => state.jobList.allJob);
-  let formData = {};
-
   const dispatch = useDispatch();
+  let formData = {};
 
   const genders = [
     {
@@ -44,7 +44,8 @@ export default function JobEditModal() {
       }
     }
     resp = jobList.map((obj) => (formData.id === obj.id ? formData : obj));
-    http.put("/hire/job/update/" + currentJob.id, formData).then(() => {
+    axiosInstance.put("/hire/job/update/" + currentJob.id, formData).then((res) => {
+      console.log(res)
       dispatch(currentJobAction(formData));
       dispatch(allJobAction(resp));
       alertify.success("İşlem başarılı bir şekilde gerçekleşti.");

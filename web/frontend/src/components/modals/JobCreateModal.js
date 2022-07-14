@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useForm} from "react-hook-form";
-import {http} from "../../helper/http";
+import axiosInstance from "../../helper/http";
 import {allJobAction} from "../../slice/JobListSlice";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -21,7 +21,7 @@ export default function JobCreateModal() {
     } = useForm();
 
     const onSubmit = (data) => {
-        http.post('/hire/job/create', data).then(res => dispatch(allJobAction([...jobList, res.data])))
+        axiosInstance.post('/hire/job/create', data).then(res => dispatch(allJobAction([...jobList, res.data])))
         window.location.href = "#";
         reset();
     };
@@ -29,10 +29,10 @@ export default function JobCreateModal() {
     const [categories, setCategory] = useState()
 
     useEffect(() => {
-        http.get("/generic/city").then((res) => setCity(res.data));
-        http.get("/generic/category").then((res) => setCategory(res.data));
+        axiosInstance.get("/generic/city").then((res) => setCity(res.data));
+        axiosInstance.get("/generic/category").then((res) => setCategory(res.data));
     }, []);
-console.log(errors)
+console.log("denememjda")
     return (<div>
         <div className="modal" id="jobCreateModal">
             <form onSubmit={handleSubmit(onSubmit)} className="modal-box w-12/12 flex flex-col items-center">
@@ -44,8 +44,8 @@ console.log(errors)
                         <label className="label">
                             <span className="label-text">İş Kategorisi</span>
                         </label>
-                        <select className={`select select-bordered w-full ${errors.jobCategoryId && 'select-error'}`} {...register('jobCategoryId', {required: true})}>
-                            <option disabled selected>
+                        <select defaultValue="Seçiniz" className="select select-bordered w-full " {...register('jobCategoryId')}>
+                            <option disabled>
                                 Seçiniz
                             </option>
                             {categories && categories.map(category => <option key={category.id} value={category.id}>
@@ -68,8 +68,9 @@ console.log(errors)
                         <label className="label">
                             <span className="label-text">İl</span>
                         </label>
-                        <select className={`select select-bordered w-full ${errors.cityId && 'select-error'}`} {...register('cityId')}>
-                            <option disabled selected>
+                        <select defaultValue="Seçiniz"
+                                className="select select-bordered w-full " {...register('cityId')}>
+                            <option disabled>
                                 Seçiniz
                             </option>
                             {cities && cities.map(city => <option key={city.id} value={city.id}>
@@ -81,8 +82,8 @@ console.log(errors)
                         <label className="label">
                             <span className="label-text">Cinsiyet</span>
                         </label>
-                        <select className={`select select-bordered w-full ${errors.gender && 'select-error'}`} {...register('gender')}>
-                            <option disabled selected>
+                        <select defaultValue="Seçiniz" className="select select-bordered w-full " {...register('gender')}>
+                            <option disabled>
                                 Seçiniz
                             </option>
                             {genders.map(gender => <option key={gender.value} value={gender.key}>

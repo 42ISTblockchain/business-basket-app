@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useForm} from "react-hook-form";
-import {http} from "../../../helper/http";
+import axiosInstance from "../../../helper/http";
 import alertify from "alertifyjs";
 
 export default function ExperienceEditModal({experience}) {
@@ -15,7 +15,7 @@ export default function ExperienceEditModal({experience}) {
     });
 
     const onSubmit = (data) => {
-        http.put('/worker/profile/experience/update/' + experience.id, data).then(res => alertify.success("Deneyim başarıyla güncellendi."))
+        axiosInstance.put('/worker/profile/experience/update/' + experience.id, data).then(res => alertify.success("Deneyim başarıyla güncellendi."))
         window.location.href = "#";
         reset();
     };

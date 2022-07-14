@@ -1,20 +1,19 @@
-
 import axios from "axios";
 
-const localStore = JSON.parse(localStorage.getItem("auth"));
-const access_token = localStore?.tokens?.access_token;
-console.log(access_token)
+const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL
+});
 
-export const http = axios.create((() => {
-    if (access_token) {
-        return (
-            {
-                baseURL: process.env.REACT_APP_API_URL,
-                headers: {
-                    Authorization: `Bearer ${access_token}`,
-                },
-            }
-        )
+axiosInstance.interceptors.request.use(
+    function(config) {
+        const token = JSON.parse(localStorage.getItem("auth"))?.tokens;
+        if (token)
+            config.headers["Authorization"] = 'Bearer ' + token.access_token;
+        return config;
+    },
+    function(error) {
+        return Promise.reject(error);
     }
-    return {baseURL: process.env.REACT_APP_API_URL}
-})());
+);
+
+export default axiosInstance
