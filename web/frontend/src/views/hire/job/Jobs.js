@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import axiosInstance from "../../../helper/http";
 import {useSelector, useDispatch} from "react-redux";
 import {allJobAction, currentJobAction} from "../../../slice/JobListSlice";
-
 import {
     loadGenericCategories,
     loadGenericCities,
@@ -13,7 +12,6 @@ import moment from "moment";
 
 function EditButtons({data}) {
     const dispatch = useDispatch();
-
     return (
         <div>
             <a
@@ -40,7 +38,8 @@ function EditButtons({data}) {
             >
                 <span className="material-symbols-rounded">close</span>
             </a>
-        </div>)
+        </div>
+    )
 }
 
 export default function Jobs() {

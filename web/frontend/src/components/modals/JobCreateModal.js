@@ -32,7 +32,7 @@ export default function JobCreateModal() {
         axiosInstance.get("/generic/city").then((res) => setCity(res.data));
         axiosInstance.get("/generic/category").then((res) => setCategory(res.data));
     }, []);
-console.log(errors)
+console.log("denememjda")
     return (<div>
         <div className="modal" id="jobCreateModal">
             <form onSubmit={handleSubmit(onSubmit)} className="modal-box w-12/12 flex flex-col items-center">

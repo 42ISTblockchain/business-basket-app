@@ -1,14 +1,9 @@
 const menus = {
     "hire": [
         {
-            name: 'Anasayfa',
+            name: 'İş Sepetim',
             path: '/hire/',
             icon: 'dashboard',
-        },
-        {
-            name: 'İş Listem',
-            path: '/hire/job/',
-            icon: 'work',
         },
         {
             name: 'Başvurular',

@@ -14,7 +14,7 @@ import WorkerLogin from "../views/worker/auth/Login";
 import WorkerRegister from "../views/worker/auth/Register";
 import HireLogin from "../views/hire/auth/Login";
 import HireRegister from "../views/hire/auth/Register";
-import Experience from "../views/worker/Experience";
+import Experience from "views/worker/Experience";
 import {LoginAuthProvider} from "../components/auth";
 
 const routes = [
@@ -45,10 +45,6 @@ const routes = [
 						children: [
 							{
 								index: true,
-								exact: true,
-								element: <JobApplicationAccepted />
-							},
-							{
 								path: 'accepted',
 								exact: true,
 								element: <JobApplicationAccepted/>

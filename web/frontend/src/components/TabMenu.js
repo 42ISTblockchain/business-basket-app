@@ -28,11 +28,12 @@ export default function TabMenu(props) {
     return (
         <>
             {props.tabs &&
-                <div className="card w-100 dark:bg-[#242a34] bg-base-100 lg:ml-5 h-full mt-1">
+                <div className="card w-100 dark:bg-gray-600 bg-base-100 lg:ml-5 h-full mt-1">
                     <div className="tabs tabs-boxed bg-gradient-to-r from-[#3d6782] bg-[#5cc7fa5e] dark:bg-[#303258] w-full h-28 flex items-center"
                         ref={tab}>{
                         props.tabs.map((tab, index) => {
                             return (
+                                // eslint-disable-next-line jsx-a11y/anchor-is-valid
                                 <a href="#" key={index}
                                    className={tab.is_active ? "tab border-b-[1px] text-white font-bold" : "tab text-white font-bold"}
                                    onClick={() => onClickTab(index)}>{tab.name}
@@ -55,7 +56,6 @@ export default function TabMenu(props) {
 
         /*<div className="tabs tabs-boxed" ref={tab}>
             {props.tabs && props.tabs.map((tab,index) => {
-                console.log(index);
                 return (
                     <a href="#" key={index} className={tab.is_active ? "tab tab-active" : "tab"} onClick={() => onClickTab(index)}>{tab.name}
                     </a>
